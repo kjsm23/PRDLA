@@ -1,0 +1,72 @@
+.navbar {
+  margin-bottom: 0;
+  background-color: #000;
+  z-index: 9999;
+  border: none;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+  font-family: Montserrat, sans-serif;
+}
+
+.navbar li a, .navbar .navbar-brand {
+  color: #d5d5d5 !important;
+
+}
+
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+  color: #000000 !important;
+  background-color: #fff !important;
+}
+
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+
+.navbar-brand h6 {
+  margin: 0 0 35px;
+  text-transform: uppercase;
+
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navbar-inverse {
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+  background-color: black;
+}
+
+.navbar-inverse .navbar-toggle {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-inverse .navbar-brand {
+  font-weight: 400;
+}
+
+.navbar-inverse .nav li a {
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+.open .dropdown-toggle {
+  color: #fff;
+  background-color: #555 !important;
+}
+.dropdown-menu li a {
+  color: #000 !important;
+}
+.dropdown-menu li a:hover {
+  background-color: #d5d5d5 !important;
+}
+.light {
+  font-weight: 400;
+}

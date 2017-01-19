@@ -1,0 +1,25 @@
+.main-container {
+  min-heightheight: 70%;
+  min-height: calc(100% - 220px);
+  padding: 30px 0;
+}
+
+#photoform{
+  background-color: white;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bg-grey {
+  background-color: #f6f6f6;
+}
+
+#photouploaded{
+  margin-top: 5px;
+  padding-top: 50px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  background-color: black;
+}
