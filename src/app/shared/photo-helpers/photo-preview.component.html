@@ -1,0 +1,23 @@
+
+<div class="photo-preview">
+  <photo-meta [photo]="photo">
+    <favorite-button
+      [photo]="photo"
+      (onToggle)="onToggleFavorite($event)"
+      class="pull-xs-right">
+      {{photo.favoritesCount}}
+    </favorite-button>
+  </photo-meta>
+
+  <a [routerLink]="['/photo', photo.slug]" class="preview-link">
+    <h1>{{ photo.title }}</h1>
+    <p>{{ photo.description }}</p>
+    <span>Read more...</span>
+    <ul class="tag-list">
+      <li class="tag-default tag-pill tag-outline"
+          *ngFor="let tag of photo.tagList">
+        {{ tag }}
+      </li>
+    </ul>
+  </a>
+</div>

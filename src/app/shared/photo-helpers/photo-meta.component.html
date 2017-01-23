@@ -1,0 +1,17 @@
+<div class="photo-meta">
+  <a [routerLink]="['/profile', photo.author.username]">
+    <img [src]="photo.author.image" />
+  </a>
+
+  <div class="info">
+    <a class="author"
+       [routerLink]="['/profile', photo.author.username]">
+      {{ photo.author.username }}
+    </a>
+    <span class="date">
+      {{ photo.createdAt | date: 'longDate' }}
+    </span>
+  </div>
+
+  <ng-content></ng-content>
+</div>

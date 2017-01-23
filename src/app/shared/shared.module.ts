@@ -6,7 +6,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { PhotoListComponent, PhotoMetaComponent, PhotoPreviewComponent } from './photo-helpers';
+import { FavoriteButtonComponent, FollowButtonComponent } from './buttons';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 
@@ -19,7 +20,12 @@ import { ShowAuthedDirective } from './show-authed.directive';
     RouterModule
   ],
   declarations: [
+    FavoriteButtonComponent,
+    FollowButtonComponent,
     ListErrorsComponent,
+    PhotoListComponent,
+    PhotoMetaComponent,
+    PhotoPreviewComponent,
     ShowAuthedDirective
   ],
   exports: [
@@ -28,7 +34,12 @@ import { ShowAuthedDirective } from './show-authed.directive';
     ReactiveFormsModule,
     HttpModule,
     RouterModule,
+    FavoriteButtonComponent,
+    FollowButtonComponent,
     ListErrorsComponent,
+    PhotoListComponent,
+    PhotoMetaComponent,
+    PhotoPreviewComponent,
     ShowAuthedDirective
   ]
 })

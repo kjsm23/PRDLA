@@ -1,0 +1,10 @@
+<button
+  class="btn btn-sm btn-default"
+  [ngClass]="{ 'disabled': isSubmitting,
+               'btn-info': !profile.following,
+               'btn-info': profile.following }"
+  (click)="toggleFollowing()">
+  <i class="ion-plus-round"></i>
+  &nbsp;
+  {{ profile.following ? 'Unfollow' : 'Follow' }} {{ profile.username }}
+</button>

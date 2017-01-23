@@ -1,5 +1,34 @@
 <div class = "photo-page">
   <div class = "container-fluid" id="photouploaded">
+    <h1>{{photo.title}}</h1>
+    <photo-meta [photo]="photo">
+       <span [hidden]="!canModify">
+          <a class="btn btn-sm btn-outline-secondary"
+             [routerLink]="['/', photo.slug]">
+            <i class="ion-edit"></i> Edit Panorama Description
+          </a>
+
+          <button class="btn btn-sm btn-outline-danger"
+                  [ngClass]="{disabled: isDeleting}"
+                  (click)="deletePhoto()">
+            <i class="ion-trash-a"></i> Delete Panorama
+          </button>
+        </span>
+
+      <span [hidden]="canModify">
+          <follow-button
+            [profile]="photo.author"
+            (onToggle)="onToggleFollowing($event)">
+          </follow-button>
+
+          <favorite-button
+            [photo]="photo"
+            (onToggle)="onToggleFavorite($event)">
+            {{ photo.favorited ? 'Unfavorite' : 'Favorite' }} Photo <span class="counter">({{ photo.favoritesCount }})</span>
+          </favorite-button>
+        </span>
+
+    </photo-meta>
       <iframe class = "embed-responsive-item" width="100%" height="500px" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.3/pannellum.htm?panorama=https://pannellum.org/images/alma.jpg"></iframe>
     </div>
 
@@ -14,10 +43,49 @@
             <div class = "container">
               <br>
               <div class="panel panel-default">
-                <div class="panel-heading">Satelites</div>
-                <div class="panel-body">Muchos satelites</div>
+                <div class="panel-heading">{{photo.title}}</div>
+                <div class="panel-body" [innerHTML]="photo.body | markdown"></div>
               </div>
             </div>
+
+          </div>
+        </div>
+
+        <div class ="row">
+          <div class = "col-sm-8">
+            <div class = "container">
+              <hr>
+
+              <div *showAuthed="true">
+                  <list-errors [errors]="commentFormErrors"></list-errors>
+                  <!-- Comments Form -->
+                  <form (ngSubmit)="addComment()">
+                    <div class="well">
+                      <h4>Leave a Comment:</h4>
+                      <form>
+                        <fieldset [disabled]="isSubmitting">
+                          <div class="form-group">
+                            <textarea class="form-control" placeholder="Leave a Comment..." rows="3" [formControl]="commentControl"></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </fieldset>
+                      </form>
+                    </div>
+                  </form>
+              </div>
+
+              <div *showAuthed="false">
+                <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this panorama.
+              </div>
+
+              <photo-comment
+                *ngFor="let comment of comments"
+                [comment]="comment"
+                (deleteComment)="onDeleteComment(comment)">
+              </photo-comment>
+
+            </div>
+
           </div>
         </div>
       </div>

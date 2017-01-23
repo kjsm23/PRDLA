@@ -21,7 +21,8 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <!-- Show this for logged out users -->
+      <ul *showAuthed="false" class="nav navbar-nav ">
         <li>
           <a routerLink="/">Home</a>
         </li>
@@ -37,10 +38,49 @@
           <a routerLink="/">About</a>
         </li>
         <li>
+          <a routerLink="/register"
+             routerLinkActive="active">Sign Up</a>
+        </li>
+        <li>
           <a routerLink="/login"
-             routerLinkActive="active">Sign Up | Login</a>
+             routerLinkActive="active">Login</a>
         </li>
       </ul>
+
+      <!-- Show this for logged in users -->
+      <ul *showAuthed="true" class="nav navbar-nav ">
+        <li>
+          <a routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">Home</a>
+        </li>
+        <li class="dropdown">
+          <a class = "page-scroll "href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Panorama<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/">Pano Gallery</a></li>
+            <li><a routerLink="/">Featured</a></li>
+            <li><a routerLink="/">Tutorial</a></li>
+          </ul>
+        </li>
+        <li>
+          <a routerLink="/editor"
+             routerLinkActive="active">New Panorama</a>
+        </li>
+        <li>
+          <a routerLink="/settings"
+             routerLinkActive="active">Settings</a>
+        </li>
+        <li>
+          <a [routerLink]="['/profile', current.username]"
+             routerLinkActive="active">
+            <img [src]="currentUser.image"
+             *ngIf="currentUser.image" class="user-pic"/>{{currentUser.username}}
+          </a>
+        </li>
+
+      </ul>
+
+
     </div>
     <!-- /.navbar-collapse -->
   </div>

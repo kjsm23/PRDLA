@@ -1,0 +1,18 @@
+.bg-grey {
+  background-color: #f6f6f6;
+}
+
+.main-container {
+  min-heightheight: 70%;
+  min-height: calc(100% - 220px);
+  padding: 30px 0;
+}
+
+#uploadform{
+  background-color: white;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
