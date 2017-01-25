@@ -1,10 +1,16 @@
 <div class="profile-page">
-
+  <div class="main-container bg-grey">
+    <div class = "container" id = "profileform">
   <div class="user-info">
     <div class="container">
       <div class="row">
 
-        <div class="col-xs-12 col-md-10 offset-md-1">
+        <div class="col-sm-8">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <img [src]="profile.image" class="user-img" />
           <h4>{{ profile.username }}</h4>
           <p>{{ profile.bio }}</p>
@@ -23,8 +29,8 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-xs-12 col-md-10 offset-md-1">
-        <div class="articles-toggle">
+      <div class="col-sm-8">
+        <div class="photos-toggle">
           <ul class="nav navbar-nav">
             <li>
               <a
@@ -50,5 +56,6 @@
 
     </div>
   </div>
-
+    </div>
+  </div>
 </div>

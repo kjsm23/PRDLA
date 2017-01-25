@@ -4,7 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-
+#mapid {
+  height: 350px;
+}
 
 .home-page{
   padding-top: 30px;

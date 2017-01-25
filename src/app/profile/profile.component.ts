@@ -8,7 +8,8 @@ import { User, UserService, Profile } from '../shared';
 
 @Component({
   selector: 'profile-page',
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   constructor(

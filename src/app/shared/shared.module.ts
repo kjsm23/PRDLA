@@ -10,6 +10,10 @@ import { PhotoListComponent, PhotoMetaComponent, PhotoPreviewComponent } from '.
 import { FavoriteButtonComponent, FollowButtonComponent } from './buttons';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
+import {LeafletMapComponent} from './leaflet-map';
+import {NavigatorComponent} from './leaflet-map/navigator';
+import {MarkerComponent} from './leaflet-map/marker';
+
 
 @NgModule({
   imports: [
@@ -22,11 +26,15 @@ import { ShowAuthedDirective } from './show-authed.directive';
   declarations: [
     FavoriteButtonComponent,
     FollowButtonComponent,
+    LeafletMapComponent,
     ListErrorsComponent,
+    MarkerComponent,
+    NavigatorComponent,
     PhotoListComponent,
     PhotoMetaComponent,
     PhotoPreviewComponent,
-    ShowAuthedDirective
+    ShowAuthedDirective,
+
   ],
   exports: [
     CommonModule,
@@ -36,6 +44,9 @@ import { ShowAuthedDirective } from './show-authed.directive';
     RouterModule,
     FavoriteButtonComponent,
     FollowButtonComponent,
+    MarkerComponent,
+    NavigatorComponent,
+    LeafletMapComponent,
     ListErrorsComponent,
     PhotoListComponent,
     PhotoMetaComponent,

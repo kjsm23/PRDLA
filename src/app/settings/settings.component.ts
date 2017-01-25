@@ -9,7 +9,8 @@ import { User, UserService } from '../shared';
 
 @Component({
   selector: 'settings-page',
-  templateUrl: './settings.component.html'
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
   user: User = new User();

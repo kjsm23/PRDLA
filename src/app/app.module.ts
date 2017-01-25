@@ -18,7 +18,9 @@ import{
   AuthGuard,
   CommentsService,
   FooterComponent,
+  GeocodingService,
   HeaderComponent,
+  MapService,
   JwtService,
   PhotosService,
   ProfilesService,
@@ -33,6 +35,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     AppComponent,
     FooterComponent,
     HeaderComponent
+
   ],
   imports: [
     BrowserModule,
@@ -46,12 +49,15 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     SharedModule,
     rootRouting,
     SettingsModule
+
   ],
   providers: [
     ApiService,
     AuthGuard,
     CommentsService,
+    GeocodingService,
     JwtService,
+    MapService,
     PhotosService,
     ProfilesService,
     UserService

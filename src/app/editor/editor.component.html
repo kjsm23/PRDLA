@@ -5,10 +5,16 @@
       <div class="col-sm-8">
         <br>
         <h2><strong>Upload 360 Degrees Panorama</strong></h2>
-        <p>Equirectangular panorama width must "Not exceed" 8191px </p>
+        <p>Equirectangular panorama maximum image size should be limited to 4096 px wide;
+          8191px is also acceptable for most devices. </p>
+
+
         <hr>
 
-        <list-errors [errors]="errors"></list-errors>
+      <file-upload-section></file-upload-section>
+
+        <hr>
+      <list-errors [errors]="errors"></list-errors>
         <br>
         <form [formGroup]="photoForm">
           <fieldset [disabled]="isSubmitting">
@@ -30,7 +36,7 @@
               </textarea>
             </fieldset>
 
-
+            <hr>
             <div class="panel panel-default">
               <div class="panel-heading"><strong>Panorama Preview</strong></div>
               <div class="panel-body">
@@ -45,6 +51,12 @@
               </div>
 
             </div>
+            <hr>
+            <div class = "container-fluid" >
+              <h2>Mark the location with the marker</h2>
+              <leaflet-map></leaflet-map>
+            </div>
+            <!-- end map div -->
 
             <button class="btn btn-lg pull-xs-right btn-primary" type="button" (click)="submitForm()">
               Publish Panorama
