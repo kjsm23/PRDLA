@@ -34,7 +34,7 @@ export class PhotosService {
 
   get(slug): Observable<Photo> {
     return this.apiService.get('/photos/' + slug)
-      .map(data => data.article);
+      .map(data => data.photo);
   }
 
   destroy(slug) {
@@ -42,12 +42,12 @@ export class PhotosService {
   }
 
   save(photo): Observable<Photo> {
-    // If we're updating an existing article
+    // If we're updating an existing photo
     if (photo.slug) {
       return this.apiService.put('/photos/' + photo.slug, {photo: photo})
         .map(data => data.photo);
 
-      // Otherwise, create a new article
+      // Otherwise, create a new photo
     } else {
       return this.apiService.post('/photos/', {photo: photo})
         .map(data => data.photo);

@@ -34,12 +34,12 @@ export class PhotoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Retreive the prefetched article
+    // Retreive the prefetched photo
     this.route.data.subscribe(
       (data: { photo: Photo }) => {
         this.photo = data.photo;
 
-        // Load the comments on this article
+        // Load the comments on this photo
         this.populateComments();
       }
     );
@@ -68,7 +68,7 @@ export class PhotoComponent implements OnInit {
     this.photo.author.following = following;
   }
 
-  deleteArticle() {
+  deletePhoto() {
     this.isDeleting = true;
 
     this.photosService.destroy(this.photo.slug)
