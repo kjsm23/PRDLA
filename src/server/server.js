@@ -20,8 +20,8 @@ var isProduction = process.env.NODE_ENV === 'production';
 var app = express();
 var db = mongoose.connection;
 
-app.options('*', cors());
-app.use(cors());
+
+
 
 
 
@@ -30,6 +30,18 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
+var originsWhitelist = [ 'http://localhost:4200']; // My front end
+
+var corsOptions = {
+
+  origin:function(origin,callback){
+    var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+    callback(null,isWhitelisted);
+  },
+  credentials:true
+}
+app.use(cors(corsOptions));
 app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
 
@@ -107,7 +119,5 @@ app.use(function(err, req, res, next) {
 
 });
 
-
-//upload
 
 

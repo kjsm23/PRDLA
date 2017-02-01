@@ -51,22 +51,6 @@ var User = mongoose.model('User');
 var auth = require('../auth');
 
 
-
-var bodyParser = require('body-parser');
-
-router.use(function(req, res, next) { //allow cross origin requests
-  res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
-
-/** Serving from the same express Server
- No cors required */
-router.use(express.static('../client'));
-router.use(bodyParser.json());
-
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
     cb(null, './uploads/');
@@ -82,7 +66,7 @@ var upload = multer({ //multer settings
 }).single('file');
 
 /** API path that will upload the files */
-router.post('/upload', function(req, res) {
+router.post('/', function(req, res) {
   upload(req,res,function(err){
     console.log(req.file);
     if(err){
