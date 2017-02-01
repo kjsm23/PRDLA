@@ -11,7 +11,8 @@ var fs = require('fs'),
   cors = require('cors'),
   passport = require('passport'),
   errorhandler = require('errorhandler'),
-  mongoose = require('mongoose');
+  mongoose = require('mongoose'),
+  multer = require('multer');
 
 var isProduction = process.env.NODE_ENV === 'production';
 
@@ -19,8 +20,10 @@ var isProduction = process.env.NODE_ENV === 'production';
 var app = express();
 var db = mongoose.connection;
 
-
+app.options('*', cors());
 app.use(cors());
+
+
 
 // Normal express config defaults
 app.use(require('morgan')('dev'));
@@ -54,6 +57,9 @@ require('./config/passport');
 app.use(require('./routes/index'));
 
 console.log('Connected');
+
+
+
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -100,5 +106,8 @@ app.use(function(err, req, res, next) {
   });
 
 });
+
+
+//upload
 
 

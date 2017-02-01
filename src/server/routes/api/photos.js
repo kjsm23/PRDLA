@@ -9,6 +9,7 @@ var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 var auth = require('../auth');
 
+
 // Preload photo objects on routes with ':photo'
 router.param('photo', function(req, res, next, slug) {
   Photo.findOne({ slug: slug})

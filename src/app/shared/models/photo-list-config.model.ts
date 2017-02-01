@@ -7,6 +7,7 @@ export class PhotoListConfig {
   filters: {
     tag?: string,
     author?: string,
+    image?: string,
     favorited?: string,
     limit?: number,
     offset?: number

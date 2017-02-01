@@ -10,6 +10,7 @@ var PhotoSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
   title: String,
   description: String,
+  image: String, // añadi pa subir foto
   body: String,
   favoritesCount: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
@@ -44,6 +45,7 @@ PhotoSchema.methods.toJSONFor = function(user){
     slug: this.slug,
     title: this.title,
     description: this.description,
+    image: this.image,
     body: this.body,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,

@@ -8,7 +8,7 @@ import { EditorComponent } from './editor.component';
 import { EditablePhotoResolver } from './editable-article-resolver.service';
 import { AuthGuard, SharedModule } from '../shared';
 import { FileUploadSectionComponent } from './file-upload/file-upload-section';
-import { FileUploadModule } from 'ng2-file-upload';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 const editorRouting: ModuleWithProviders = RouterModule.forChild([
   {
@@ -29,13 +29,13 @@ const editorRouting: ModuleWithProviders = RouterModule.forChild([
 @NgModule({
   imports: [
     editorRouting,
-    SharedModule,
-    FileUploadModule
+    SharedModule
 
   ],
   declarations: [
     EditorComponent,
-    FileUploadSectionComponent
+    FileUploadSectionComponent,
+    FileSelectDirective
   ],
   providers: [
     EditablePhotoResolver
