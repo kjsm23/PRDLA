@@ -5,7 +5,25 @@ var mongoose = require('mongoose');
 var router = require('express').Router();
 var passport = require('passport');
 var User = mongoose.model('User');
+var multer  =  require('multer');
 var auth = require('../auth');
+
+
+var storage = multer.diskStorage({ //multers disk storage settings
+  destination: function (req, file, cb) {
+    cb(null, '/uploads/');
+  },
+  filename: function (req, file, cb) {
+    var datetimestamp = Date.now();
+    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+  }
+});
+
+var upload = multer({ //multer settings
+  storage: storage
+}).single('file');
+
+
 
 router.get('/user', auth.required, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
@@ -42,6 +60,14 @@ router.put('/user', auth.required, function(req, res, next){
   }).catch(next);
 });
 
+/*
+router.post('/users/upload', function(req, res, next){
+
+  console.log('Entre');
+});*/
+
+
+
 router.post('/users/login', function(req, res, next){
   if(!req.body.user.email){
     return res.status(422).json({errors: {email: "can't be blank"}});
@@ -73,6 +99,26 @@ router.post('/users', function(req, res, next){
   user.save().then(function(){
     return res.json({user: user.toAuthJSON()});
   }).catch(next);
+});
+
+
+/*
+router.get('/users/upload', function (req, res) {
+  res.end('file catcher example');
+});*/
+
+/** API path that will upload the files */
+router.post('/users/upload',auth.optional, function(req, res) {
+  upload(req,res,function(err){
+    console.log(req.file);
+    if(err){
+      res.json({error_code:1,err_desc:err});
+      return;
+    }
+    res.json({error_code:0,err_desc:null});
+
+  });
+
 });
 
 module.exports = router;

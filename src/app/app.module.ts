@@ -49,8 +49,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     SharedModule,
     rootRouting,
     SettingsModule
-
   ],
+  exports:[],
   providers: [
     ApiService,
     AuthGuard,

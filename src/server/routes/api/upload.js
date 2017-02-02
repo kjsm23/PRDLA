@@ -42,6 +42,7 @@ router.post('/photo', auth.required, function(req, res, next) {
 module.exports = router;
 */
 
+/*
 var express =   require("express");
 var multer  =   require('multer');
 var mongoose = require('mongoose');
@@ -53,7 +54,7 @@ var auth = require('../auth');
 
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
-    cb(null, './uploads/');
+    cb(null, '/uploads/');
   },
   filename: function (req, file, cb) {
     var datetimestamp = Date.now();
@@ -65,8 +66,13 @@ var upload = multer({ //multer settings
   storage: storage
 }).single('file');
 
-/** API path that will upload the files */
-router.post('/', function(req, res) {
+
+router.get('/upload', function (req, res) {
+  res.end('file catcher example');
+});
+
+/** API path that will upload the files *//*
+router.post('/upload',auth.required, function(req, res,next) {
   upload(req,res,function(err){
     console.log(req.file);
     if(err){
@@ -74,8 +80,10 @@ router.post('/', function(req, res) {
       return;
     }
     res.json({error_code:0,err_desc:null});
-  });
+
+  }) .catch(next);;
+
 });
 
 
-module.exports = router;
+module.exports = router;*/

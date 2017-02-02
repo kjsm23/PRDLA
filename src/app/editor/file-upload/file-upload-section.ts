@@ -14,5 +14,5 @@ import { FileUploader } from 'ng2-file-upload';
   templateUrl: './file-upload-section.html'
 })
 export class FileUploadSectionComponent {
-  public uploader:FileUploader = new FileUploader({url:'http://localhost:3000/upload'});
+  public uploader:FileUploader = new FileUploader({url:'http://localhost:3000/api/users/upload'});
 }

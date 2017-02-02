@@ -14,23 +14,21 @@ var fs = require('fs'),
   mongoose = require('mongoose'),
   multer = require('multer');
 
+
+
+
 var isProduction = process.env.NODE_ENV === 'production';
 
 // Create global app object
 var app = express();
 var db = mongoose.connection;
 
-
-
-
-
-
 // Normal express config defaults
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+// avoid error with cors wildcard
 var originsWhitelist = [ 'http://localhost:4200']; // My front end
 
 var corsOptions = {
@@ -72,7 +70,6 @@ console.log('Connected');
 
 
 
-
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 
@@ -109,6 +106,8 @@ app.use(function(err, req, res, next) {
     error: {}
   }});
 });
+
+
 
 
   console.log('Connected to MongoDB');

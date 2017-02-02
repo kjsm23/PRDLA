@@ -273,4 +273,7 @@ router.delete('/:photo/comments/:comment', auth.required, function(req, res, nex
   }
 });
 
+
+
+
 module.exports = router;
