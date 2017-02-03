@@ -14,8 +14,14 @@ var storage = multer.diskStorage({ //multers disk storage settings
     cb(null, './img/user/upload/');
   },
   filename: function (req, file, cb) {
+
+    // User.findById(req.payload.id).then(function(user){
+    // };
+
+    User.findById(req.payload.id);
+    console.log(User);
     var datetimestamp = Date.now();
-    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+    cb(null, file.fieldname + '-' +  User.username + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
   }
 });
 
@@ -108,14 +114,15 @@ router.get('/users/upload', function (req, res) {
 });*/
 
 /** API path that will upload the files */
-router.post('/users/upload',auth.optional, function(req, res) {
+router.post('/users/upload',auth.required, function(req, res) {
   upload(req,res,function(err){
     console.log(req.file);
     if(err){
       res.json({error_code:1,err_desc:err});
       return;
     }
-    res.json({error_code:0,err_desc:null});
+
+    res.json({error_code:0,err_desc:null,auth:this.auth});
 
   });
 

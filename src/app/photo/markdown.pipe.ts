@@ -1,9 +1,7 @@
 /**
  * Created by --- on 1/21/2017.
  */
-
 import { Pipe, PipeTransform } from '@angular/core';
-
 import * as marked from 'marked';
 
 @Pipe({name: 'markdown'})
