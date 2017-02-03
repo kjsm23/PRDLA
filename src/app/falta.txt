@@ -1,0 +1,12 @@
+alterar la clase de photo para el geo location
+anadir search por usuario en photo
+el add foto por usuario
+hotspots crud 
+editar photo component para la foto
+dashboard
+add to users forgot password
+email share 
+obfuscated photo path
+
+
+ultimo fb y transition 
