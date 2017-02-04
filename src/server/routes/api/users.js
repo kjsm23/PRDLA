@@ -13,6 +13,7 @@ var fs = require('fs');
 
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
+
     console.log(req.payload.username);
     var dir = './img/user/upload/';
     dir = dir + req.payload.username + '/';
@@ -21,6 +22,7 @@ var storage = multer.diskStorage({ //multers disk storage settings
     }
 
     cb(null,dir );
+
   },
   filename: function (req, file, cb) {
 
@@ -94,10 +96,12 @@ router.post('/users/login', function(req, res, next){
     if(user){
       user.token = user.generateJWT();
       return res.json({user: user.toAuthJSON()});
+
     } else {
       return res.status(422).json(info);
     }
   })(req, res, next);
+
 });
 
 router.post('/users', function(req, res, next){
@@ -118,6 +122,7 @@ router.get('/users/upload', function (req, res) {
   res.end('file catcher example');
 });*/
 
+/*
 /** API path that will upload the files */
 router.post('/users/upload',auth.required, function(req, res) {
   upload(req,res,function(err){
