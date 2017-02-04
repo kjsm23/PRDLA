@@ -7,6 +7,7 @@ import { HomeComponent } from './home.component';
 import { HomeAuthResolver } from './home-auth-resolver.service';
 import { SharedModule} from '../shared/shared.module';
 
+
 const homeRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: '',
@@ -21,9 +22,11 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
   imports: [
     homeRouting,
     SharedModule
+
   ],
   declarations: [
     HomeComponent
+
   ],
   providers: [
     HomeAuthResolver,
