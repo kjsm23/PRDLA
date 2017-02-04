@@ -7,7 +7,7 @@ import { PhotoComponent } from './photo.component';
 import { PhotoCommentComponent } from './photo-comment.component';
 import { PhotoResolver } from './photo-resolver.service';
 import { MarkdownPipe } from './markdown.pipe';
-import { PanoComponent } from './pano/pano.component';
+
 
 import { SharedModule } from '../shared';
 
@@ -30,7 +30,7 @@ const photoRouting: ModuleWithProviders = RouterModule.forChild([
     PhotoComponent,
     PhotoCommentComponent,
     MarkdownPipe,
-    PanoComponent
+    
   ],
   providers: [
    PhotoResolver

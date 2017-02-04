@@ -9,6 +9,7 @@ import { EditablePhotoResolver } from './editable-article-resolver.service';
 import { AuthGuard, SharedModule } from '../shared';
 import { FileUploadSectionComponent } from './file-upload/file-upload-section';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import { PanoComponent } from './pano/pano.component';
 
 const editorRouting: ModuleWithProviders = RouterModule.forChild([
   {
@@ -35,7 +36,8 @@ const editorRouting: ModuleWithProviders = RouterModule.forChild([
   declarations: [
     EditorComponent,
     FileUploadSectionComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    PanoComponent
   ],
   providers: [
     EditablePhotoResolver

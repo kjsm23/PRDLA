@@ -18,6 +18,14 @@ export class PanoComponent  implements OnInit{
 
   ngOnInit(){
 
+<<<<<<< HEAD:src/app/editor/pano/pano.component.ts
+  	// let panoPath = 'http://localhost:3000/jorge/file-jorge-1486160256329.jpg'
+    //
+    // pannellum.viewer('panorama', {
+    //   "type": "equirectangular",
+    //   "panorama": panoPath
+    // });
+=======
 
   	let panoPath = 'http://localhost:3000/jorge/file-jorge-1486160256329.jpg'
 
@@ -26,7 +34,13 @@ export class PanoComponent  implements OnInit{
       "panorama": panoPath
 
     });
+>>>>>>> origin/georgy_code:src/app/photo/pano/pano.component.ts
   }
+  
 
 }
 
+<<<<<<< HEAD:src/app/editor/pano/pano.component.ts
+}
+=======
+>>>>>>> origin/georgy_code:src/app/photo/pano/pano.component.ts

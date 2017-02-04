@@ -6,9 +6,9 @@ import { FileUploader } from 'ng2-file-upload';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-
+import 'pannellum';
 import { Photo, PhotosService, UserService,  User } from '../../shared';
-
+declare const pannellum: any;
 
 //const URL = '/';
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
@@ -17,6 +17,8 @@ import { Photo, PhotosService, UserService,  User } from '../../shared';
   selector: 'file-upload-section',
   templateUrl: './file-upload-section.html'
 })
+
+
 export class FileUploadSectionComponent  {
 constructor(
     private photosService: PhotosService,
@@ -28,7 +30,7 @@ constructor(
   currentUser: User;
   canModify: boolean;
   comments: Comment[];
- 
+
   commentFormErrors = {};
   isSubmitting = false;
   isDeleting = false;
@@ -44,6 +46,20 @@ public uploader:FileUploader;
 	    );
       console.log( this.currentUser );
       this.uploader = new FileUploader({url:'http://localhost:3000/api/users/upload', authTokenHeader:"Authorization", authToken:"Token " +  this.currentUser.token});
+
+       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+
+            console.log( JSON.parse(response));
+            var responseJson = JSON.parse(response);
+            let panoPath = 'http://localhost:3000/' + responseJson.panoInfo.user + '/' + responseJson.panoInfo.filename;
+
+         pannellum.viewer('panorama', {
+           "type": "equirectangular",
+           "panorama": panoPath,
+           "autoLoad": true
+         });
+
+        };
 	}
-  	
+
 }
