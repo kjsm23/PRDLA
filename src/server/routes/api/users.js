@@ -121,13 +121,20 @@ router.get('/users/upload', function (req, res) {
 /** API path that will upload the files */
 router.post('/users/upload',auth.required, function(req, res) {
   upload(req,res,function(err){
-    console.log(req.file);
+
+
+    //console.log(req);
+    console.log(req.payload.username);
+    console.log(req.file.filename);
+
+    
+
     if(err){
       res.json({error_code:1,err_desc:err});
       return;
     }
 
-    res.json({error_code:0,err_desc:null,auth:this.auth});
+    res.json({error_code:0,err_desc:null,auth:this.auth, panoInfo: {user: req.payload.username, filename: req.file.filename }});
 
   });
 
