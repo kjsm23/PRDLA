@@ -7,21 +7,26 @@ var passport = require('passport');
 var User = mongoose.model('User');
 var multer  =  require('multer');
 var auth = require('../auth');
+var fs = require('fs');
+
 
 
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
-    cb(null, './img/user/upload/');
+    console.log(req.payload.username);
+    var dir = './img/user/upload/';
+    dir = dir + req.payload.username + '/';
+    if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+    }
+
+    cb(null,dir );
   },
   filename: function (req, file, cb) {
 
-    // User.findById(req.payload.id).then(function(user){
-    // };
-
-    User.findById(req.payload.id);
-    console.log(User);
+    console.log(req.payload.username);
     var datetimestamp = Date.now();
-    cb(null, file.fieldname + '-' +  User.username + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+    cb(null, file.fieldname + '-' +  req.payload.username + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
   }
 });
 

@@ -61,6 +61,7 @@ if(isProduction){
 require('./models/User');
 require('./models/Photo');
 require('./models/Comment');
+require('./models/Pano');
 require('./config/passport');
 
 

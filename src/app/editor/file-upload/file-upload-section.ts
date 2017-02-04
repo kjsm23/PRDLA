@@ -43,7 +43,7 @@ public uploader:FileUploader;
 	      }
 	    );
       console.log( this.currentUser );
-      this.uploader = new FileUploader({url:'http://localhost:3000/api/users/upload', authTokenHeader:"Authorization", authToken:"Token " + this.currentUser.token});
+      this.uploader = new FileUploader({url:'http://localhost:3000/api/users/upload', authTokenHeader:"Authorization", authToken:"Token " +  this.currentUser.token});
 	}
   	
 }
