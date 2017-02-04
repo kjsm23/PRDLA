@@ -33,13 +33,19 @@ export class MarkerComponent {
   Initialize() {
     this.mapService.map.on("click", (e: MouseEvent) => {
       if (this.editing) {
-        let marker = L.marker(e.latlng, {
+
+        let marker = L.marker(e.latlng,  {
+
           icon: L.icon({
             iconUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-icon.png"),
             shadowUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-shadow.png")
           }),
-          draggable: true
+          draggable: true,
         })
+
+
+
+
           .bindPopup("Marker #" + (this.markerCount + 1).toString(), {
             offset: L.point(12, 6)
           })
