@@ -41,6 +41,9 @@ var corsOptions = {
 }
 app.use(cors(corsOptions));
 app.use(require('method-override')());
+// console.log("The current working directory is " + process.cwd());
+// console.log(__dirname + '\\public');
+// app.use('/public',express.static('./img'));
 app.use(express.static(__dirname + '/public'));
 
 app.use(session({ secret: 'PRDLA', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
