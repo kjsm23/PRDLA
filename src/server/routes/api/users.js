@@ -11,7 +11,7 @@ var auth = require('../auth');
 
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
-    cb(null, '/uploads/');
+    cb(null, './img/users/upload/');
   },
   filename: function (req, file, cb) {
     var datetimestamp = Date.now();
@@ -83,10 +83,12 @@ router.post('/users/login', function(req, res, next){
     if(user){
       user.token = user.generateJWT();
       return res.json({user: user.toAuthJSON()});
+
     } else {
       return res.status(422).json(info);
     }
   })(req, res, next);
+
 });
 
 router.post('/users', function(req, res, next){
@@ -107,8 +109,9 @@ router.get('/users/upload', function (req, res) {
   res.end('file catcher example');
 });*/
 
+/*
 /** API path that will upload the files */
-router.post('/users/upload',auth.optional, function(req, res) {
+router.post('/users/upload',auth.required, function(req, res) {
   upload(req,res,function(err){
     console.log(req.file);
     if(err){

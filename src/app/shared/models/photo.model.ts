@@ -14,5 +14,7 @@ export class Photo{
   favoritesCount:number;
   description:string = '';
   author:Profile;
+  lat: number;
+  lng:number;
 
 }
