@@ -21,13 +21,15 @@
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/leaflet/dist/leaflet.css"
+        "../node_modules/leaflet/dist/leaflet.css",
+        "../node_modules/pannellum/build/pannellum.css"
       ],
       "addons": [
       "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"],
       "scripts": [
         "../node_modules/leaflet/dist/leaflet.js",
-        "../node_modules/marked/marked.min.js"],
+        "../node_modules/marked/marked.min.js",
+        "../node_modules/pannellum/build/pannellum.js"],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

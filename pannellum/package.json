@@ -1,0 +1,86 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "pannellum",
+        "scope": null,
+        "escapedName": "pannellum",
+        "name": "pannellum",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\Diator\\Desktop\\Git_kenin\\PRDLA\\src\\app\\photo"
+    ]
+  ],
+  "_from": "pannellum@latest",
+  "_id": "pannellum@2.3.2",
+  "_inCache": true,
+  "_location": "/pannellum",
+  "_nodeVersion": "4.2.6",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/pannellum-2.3.2.tgz_1479691883656_0.27728553395718336"
+  },
+  "_npmUser": {
+    "name": "mpetroff",
+    "email": "npmjs@mpetroff.net"
+  },
+  "_npmVersion": "3.5.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "pannellum",
+    "scope": null,
+    "escapedName": "pannellum",
+    "name": "pannellum",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/pannellum/-/pannellum-2.3.2.tgz",
+  "_shasum": "8b1a989ce052aab23adec5b2e8868d315348b8a2",
+  "_shrinkwrap": null,
+  "_spec": "pannellum",
+  "_where": "C:\\Users\\Diator\\Desktop\\Git_kenin\\PRDLA\\src\\app\\photo",
+  "author": {
+    "name": "Matthew Petroff",
+    "url": "https://mpetroff.net/"
+  },
+  "bugs": {
+    "url": "https://github.com/mpetroff/pannellum/issues"
+  },
+  "dependencies": {},
+  "description": "Pannellum is a lightweight, free, and open source panorama viewer for the web.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8b1a989ce052aab23adec5b2e8868d315348b8a2",
+    "tarball": "https://registry.npmjs.org/pannellum/-/pannellum-2.3.2.tgz"
+  },
+  "gitHead": "f85e82953ba278ddd324ef62300d3a724260c5d8",
+  "homepage": "https://pannellum.org/",
+  "keywords": [
+    "panorama",
+    "viewer"
+  ],
+  "license": "MIT",
+  "main": "build/pannellum.js",
+  "maintainers": [
+    {
+      "name": "mpetroff",
+      "email": "npmjs@mpetroff.net"
+    }
+  ],
+  "name": "pannellum",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpetroff/pannellum.git"
+  },
+  "scripts": {},
+  "version": "2.3.2"
+}

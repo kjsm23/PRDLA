@@ -22,4 +22,11 @@ router.get('/', auth.optional, function(req, res, next) {
 
 });
 
+router.post('/', auth.required, function(req,res,next){
+
+	//Pano.
+
+
+
+});
 module.exports = router;
