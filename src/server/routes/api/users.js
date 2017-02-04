@@ -7,15 +7,28 @@ var passport = require('passport');
 var User = mongoose.model('User');
 var multer  =  require('multer');
 var auth = require('../auth');
+var fs = require('fs');
+
 
 
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
-    cb(null, './img/users/upload/');
+
+    console.log(req.payload.username);
+    var dir = './img/user/upload/';
+    dir = dir + req.payload.username + '/';
+    if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+    }
+
+    cb(null,dir );
+
   },
   filename: function (req, file, cb) {
+
+    console.log(req.payload.username);
     var datetimestamp = Date.now();
-    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+    cb(null, file.fieldname + '-' +  req.payload.username + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
   }
 });
 
@@ -118,7 +131,8 @@ router.post('/users/upload',auth.required, function(req, res) {
       res.json({error_code:1,err_desc:err});
       return;
     }
-    res.json({error_code:0,err_desc:null});
+
+    res.json({error_code:0,err_desc:null,auth:this.auth});
 
   });
 

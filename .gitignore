@@ -38,3 +38,5 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+img/User/upload/file-1486143565876.jpg
+*.jpg
