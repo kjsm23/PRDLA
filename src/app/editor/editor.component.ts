@@ -1,17 +1,19 @@
 /**
  * Created by --- on 1/22/2017.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Photo, PhotosService,Pano,PanoService } from '../shared';
+import{FileUploadSectionComponent} from './file-upload/file-upload-section';
 
-import { Photo, PhotosService } from '../shared';
 
 @Component({
   selector: 'editor-page',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
+
 export class EditorComponent implements OnInit {
   photo: Photo = new Photo();
   photoForm: FormGroup;
@@ -23,7 +25,8 @@ export class EditorComponent implements OnInit {
     private photosService: PhotosService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private panoService: PanoService
   ) {
     // use the FormBuilder to create a form group
     this.photoForm = this.fb.group({
@@ -69,9 +72,19 @@ export class EditorComponent implements OnInit {
     // update the model
     this.updatePhoto(this.photoForm.value);
 
+
+
     // post the changes
     this.photosService
-      .save(this.photo)
+      .save({
+        title: 'Esto es un titulo',
+        description: 'Esto es una desc';
+        path: FileUploadSectionComponent.panoPath ;
+        lat: ;
+        log: ;
+        hotspot: [{Glon: 3.50 , Glat: 3.50}];
+        transition: ;
+        author: ;})
       .subscribe(
         photo => this.router.navigateByUrl('/photo/' + photo.slug),
         err => {

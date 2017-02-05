@@ -44,12 +44,13 @@ router.get('/', auth.optional, function(req, res, next) {
 
   if(typeof req.query.offset !== 'undefined'){
     offset = req.query.offset;
+    console.log(offset);
   }
 
-  if( typeof req.query.tag !== 'undefined' ){
-    query.tagList = {"$in" : [req.query.tag]};
-  }
 
+  //if( typeof req.query.tag !== 'undefined' ){
+   // query.tagList = {"$in" : [req.query.tag]};
+ // }
   Promise.all([
     req.query.author ? User.findOne({username: req.query.author}) : null,
     req.query.favorited ? User.findOne({username: req.query.favorited}) : null
@@ -66,7 +67,8 @@ router.get('/', auth.optional, function(req, res, next) {
     } else if(req.query.favorited){
       query._id = {$in: []};
     }
-
+    limit = parseInt(limit);
+    offset = parseInt(offset);
     return Promise.all([
       Photo.find(query)
         .limit(limit)
@@ -106,6 +108,8 @@ router.get('/feed', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
 
+    limit = parseInt(limit);
+    offset = parseInt(offset);
     Promise.all([
       Photo.find({ author: {$in: user.following}})
         .limit(limit)

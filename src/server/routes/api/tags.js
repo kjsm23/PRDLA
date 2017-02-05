@@ -1,6 +1,8 @@
 /**
  * Created by --- on 1/26/2017.
  */
+
+/*
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var Photo = mongoose.model('Photo');
@@ -13,3 +15,4 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+*/

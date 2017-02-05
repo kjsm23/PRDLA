@@ -41,6 +41,7 @@ export class MarkerComponent {
             shadowUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-shadow.png")
           }),
           draggable: true,
+
         })
 
 
@@ -60,6 +61,7 @@ export class MarkerComponent {
             this.markerCount -= 1;
           }
         });
+        //let geojson = marker.toGeoJSON();
       }
     });
   }

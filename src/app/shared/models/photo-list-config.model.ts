@@ -5,7 +5,7 @@ export class PhotoListConfig {
   type: string = 'all';
 
   filters: {
-    tag?: string,
+   // tag?: string,
     author?: string,
     image?: string,
     favorited?: string,

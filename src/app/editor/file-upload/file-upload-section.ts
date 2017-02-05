@@ -53,6 +53,7 @@ public uploader:FileUploader;
             var responseJson = JSON.parse(response);
             let panoPath = 'http://localhost:3000/' + responseJson.panoInfo.user + '/' + responseJson.panoInfo.filename;
 
+
          pannellum.viewer('panorama', {
            "type": "equirectangular",
            "panorama": panoPath,
