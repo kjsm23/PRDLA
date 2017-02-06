@@ -8,9 +8,9 @@ var PanoSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
   title: String,
   description: String,
-  path: String, 
-  lat: Number,
-  log: Number,
+  path: String,
+  Glong: Number,
+  Glong: Number,
   hotspot:[{}] ,
   transition: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }

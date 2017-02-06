@@ -1,11 +1,12 @@
 /**
  * Created by --- on 1/22/2017.
- */
-import { Component,Input, OnInit } from '@angular/core';
+
+import { Component, OnInit,Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Photo, PhotosService,Pano,PanoService } from '../shared';
-import{FileUploadSectionComponent} from './file-upload/file-upload-section';
+ import {FileUploadSectionComponent} from './file-upload/file-upload-section';
+import { Photo, PhotosService } from '../shared';
+
 
 
 @Component({
@@ -17,6 +18,7 @@ import{FileUploadSectionComponent} from './file-upload/file-upload-section';
 export class EditorComponent implements OnInit {
   photo: Photo = new Photo();
   photoForm: FormGroup;
+  currentPano: string;
   tagField = new FormControl();
   errors: Object = {};
   isSubmitting: boolean = false;
@@ -26,8 +28,9 @@ export class EditorComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private panoService: PanoService
+
   ) {
+
     // use the FormBuilder to create a form group
     this.photoForm = this.fb.group({
       title: '',
@@ -37,7 +40,11 @@ export class EditorComponent implements OnInit {
     // Optional: subscribe to value changes on the form
     // this.photoForm.valueChanges.subscribe(value => this.updatePhoto(value));
   }
-
+  handlePanoUpdated(panoramaChanged) {
+    // Handle the event
+    this.currentPano = panoramaChanged;
+    console.log('evento:' + panoramaChanged);
+  }
   ngOnInit() {
     // If there's an photo prefetched, load it
     this.route.data.subscribe(
@@ -68,23 +75,18 @@ export class EditorComponent implements OnInit {
 
   submitForm() {
     this.isSubmitting = true;
-
+    //console.log( currentPano );
     // update the model
     this.updatePhoto(this.photoForm.value);
 
-
+    //console.log(this.currentPano);
 
     // post the changes
+    console.log(this.currentPano);
     this.photosService
-      .save({
-        title: 'Esto es un titulo',
-        description: 'Esto es una desc';
-        path: FileUploadSectionComponent.panoPath ;
-        lat: ;
-        log: ;
-        hotspot: [{Glon: 3.50 , Glat: 3.50}];
-        transition: ;
-        author: ;})
+
+      .save(this.currentPano)
+
       .subscribe(
         photo => this.router.navigateByUrl('/photo/' + photo.slug),
         err => {

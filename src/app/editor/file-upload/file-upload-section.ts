@@ -1,13 +1,14 @@
 /**
  * Created by --- on 1/24/2017.
  */
-import { Component } from '@angular/core';
+import { Component,Input, Output,EventEmitter  } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'pannellum';
 import { Photo, PhotosService, UserService,  User } from '../../shared';
+import featureGroup = L.featureGroup;
 declare const pannellum: any;
 
 //const URL = '/';
@@ -20,11 +21,16 @@ declare const pannellum: any;
 
 
 export class FileUploadSectionComponent  {
+
+  @Output() cpano = new EventEmitter();
 constructor(
     private photosService: PhotosService,
     private router: Router,
     private userService: UserService
-  ) {}
+  ) {
+
+}
+
 
   photo: Photo;
   currentUser: User;
@@ -53,6 +59,8 @@ public uploader:FileUploader;
             var responseJson = JSON.parse(response);
             let panoPath = 'http://localhost:3000/' + responseJson.panoInfo.user + '/' + responseJson.panoInfo.filename;
 
+
+         this.cpano.emit(panoPath);
 
          pannellum.viewer('panorama', {
            "type": "equirectangular",
