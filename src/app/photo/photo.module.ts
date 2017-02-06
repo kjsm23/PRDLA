@@ -30,8 +30,9 @@ const photoRouting: ModuleWithProviders = RouterModule.forChild([
     PhotoComponent,
     PhotoCommentComponent,
     MarkdownPipe,
-    
+
   ],
+
   providers: [
    PhotoResolver
   ]

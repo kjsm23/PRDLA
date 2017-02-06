@@ -11,6 +11,7 @@ declare const pannellum: any;
   selector: 'pano',
   templateUrl: './pano.component.html',
   styleUrls: ['./pano.component.css']
+
 })
 export class PanoComponent  implements OnInit{
   constructor() {

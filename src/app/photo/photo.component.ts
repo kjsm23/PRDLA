@@ -10,7 +10,6 @@ import {
   User,
   UserService
 } from '../shared';
-
 @Component({
   selector: 'photo-page',
   templateUrl: './photo.component.html'

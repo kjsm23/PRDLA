@@ -1,5 +1,5 @@
 /**
- * Created by --- on 1/22/2017.
+ * Created by --- on 1/22/2017.*/
 
 import { Component, OnInit,Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
@@ -19,6 +19,7 @@ export class EditorComponent implements OnInit {
   photo: Photo = new Photo();
   photoForm: FormGroup;
   currentPano: string;
+  currentLocPano = new Object();
   tagField = new FormControl();
   errors: Object = {};
   isSubmitting: boolean = false;
@@ -44,6 +45,13 @@ export class EditorComponent implements OnInit {
     // Handle the event
     this.currentPano = panoramaChanged;
     console.log('evento:' + panoramaChanged);
+  }
+  handleLocPanoUpdated(panoLocChanged) {
+    // Handle the event
+
+    this.currentLocPano = panoLocChanged;
+    console.log('evento:' + panoLocChanged);
+
   }
   ngOnInit() {
     // If there's an photo prefetched, load it
@@ -73,7 +81,7 @@ export class EditorComponent implements OnInit {
     this.photo.tagList = this.photo.tagList.filter((tag) => tag !== tagName);
   }*/
 
-  submitForm() {
+  submitForm(){
     this.isSubmitting = true;
     //console.log( currentPano );
     // update the model

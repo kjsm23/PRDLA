@@ -6,7 +6,7 @@ export class Pano{
   slug:string;
   title:string = '';
   description:string = '';
-  path:string ;
+  pathPano:string ;
   lat: number;
   log: number;
   hotspot: [{Glon: 3.50 , Glat: 3.50}];

@@ -1,7 +1,7 @@
 /**
  * Created by --- on 1/25/2017.
  */
-import {Component} from "@angular/core";
+import {Component,Output,EventEmitter} from "@angular/core";
 import {MapService} from "../../services/map.service";
 import {Map, MouseEvent, Marker} from "leaflet";
 
@@ -15,14 +15,19 @@ import {Map, MouseEvent, Marker} from "leaflet";
   providers: []
 })
 export class MarkerComponent {
+  @Output() locpano = new EventEmitter();
   editing: boolean;
   removing: boolean;
   markerCount: number;
+  marker:any;
+
 
   constructor(private mapService: MapService) {
     this.editing = false;
     this.removing = false;
     this.markerCount = 0;
+    this.marker;
+
   }
 
   ngOnInit() {
@@ -30,11 +35,15 @@ export class MarkerComponent {
     this.mapService.disableMouseEvent("remove-marker");
   }
 
-  Initialize() {
-    this.mapService.map.on("click", (e: MouseEvent) => {
-      if (this.editing) {
 
-        let marker = L.marker(e.latlng,  {
+  Initialize() {
+
+    this.mapService.map.on("click", (e: MouseEvent) =>
+    {
+
+      //if (this.editing) {
+        if(typeof(this.marker)=== 'undefined' ){
+         this.marker = L.marker(e.latlng,  {
 
           icon: L.icon({
             iconUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-icon.png"),
@@ -43,10 +52,6 @@ export class MarkerComponent {
           draggable: true,
 
         })
-
-
-
-
           .bindPopup("Marker #" + (this.markerCount + 1).toString(), {
             offset: L.point(12, 6)
           })
@@ -55,14 +60,18 @@ export class MarkerComponent {
 
         this.markerCount += 1;
 
-        marker.on("click", (event: MouseEvent) => {
+        this.marker.on("click", (event: MouseEvent) => {
           if (this.removing) {
-            this.mapService.map.removeLayer(marker);
+            this.mapService.map.removeLayer(this.marker);
             this.markerCount -= 1;
           }
         });
-        //let geojson = marker.toGeoJSON();
-      }
+
+      }else{
+          this.marker.setLatLng(e.latlng);
+        }
+        this.locpano.emit({lat: e.latlng.lat, lng: e.latlng.lng });
+        console.log(e.latlng);
     });
   }
 
