@@ -24,8 +24,16 @@ router.get('/', auth.optional, function(req, res, next) {
 
 router.post('/', auth.required, function(req,res,next){
 
-	//Pano.
+	Pano.title = req.payload.title;
+	Pano.description = req.payload.description;
+  Pano.path = req.payload.path;
+  Pano.lat = req.payload.lat;
+  Pano.log = req.payload.log;
+  Pano.hotspot = req.payload.hotspot;
+  Pano.transition = req.payload.transition;
+  Pano.author = req.payload.author;
 
+  Pano.save();
 
 
 });

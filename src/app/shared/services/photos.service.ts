@@ -62,5 +62,4 @@ export class PhotosService {
     return this.apiService.delete('/photos/' + slug + '/favorite');
   }
 
-
 }

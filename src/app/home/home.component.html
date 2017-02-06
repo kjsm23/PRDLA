@@ -14,14 +14,34 @@
         <div class = "container-fluid">
           <!-- Title -->
           <div class="row">
-            <div class="col-lg-12">
-              <h3>Latest Featured Panoramas</h3>
+            <div class="col-md-9">
+              <div class ="feed-toggle">
+              <ul class ="nav nav-tabs">
+                <li>
+                  <a [ngClass]="{'active': listConfig.type ==='feed'}"
+                     (click)="setListTo('feed')">Latest Your Panoramas
+                  </a>
+                </li>
+                <li>
+                  <a
+                     [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters}"
+                     (click)="setListTo('all')">
+                    Global Panoramas
+                  </a>
+                </li>
+              </ul>
+              </div>
+              </div>
             </div>
           </div>
+
+        <photo-list [limit]="10" [config]="listConfig"></photo-list>
           <!-- /.row -->
 
           <!-- Page Features -->
-          <div class="row text-center ">
+         <!-- <div class="row text-center ">
+
+
 
             <div class="col-md-3 col-sm-6 hero-feature">
               <div class="thumbnail">
@@ -102,6 +122,7 @@
 
           <!-- Page Features -->
 
+            <!--
           <div class="row text-center ">
 
             <div class="col-md-3 col-sm-6 hero-feature">
@@ -182,7 +203,7 @@
         </div>
 
         <!-- /.row -->
-
+<!--
         <div class="text-center">
           <nav aria-label="Page navigation">
             <ul class="pagination pagination-lg">
@@ -206,7 +227,7 @@
         </div>
       </section>
 
-
+-->
     <section>
       <!-- map -->
       <div class = "container-fluid bg-grey" >
@@ -216,5 +237,5 @@
       <!-- end map div -->
     </section>
 
-
+      </section>
 </div>

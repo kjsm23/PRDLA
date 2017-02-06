@@ -5,15 +5,15 @@ import {Profile} from './profile.model';
 
 export class Photo{
   slug:string;
-  image:string;
   title:string = '';
+  description:string = '';
   body: string = '';
   createdAt:string;
   updatedAt:string;
   favorited:boolean;
   favoritesCount:number;
-  description:string = '';
   author:Profile;
+  image:string;
   lat: number;
   lng:number;
 

@@ -6,7 +6,7 @@ var router = require('express').Router();
 router.use('/', require('./users'));
 router.use('/profiles', require('./profiles'));
 router.use('/photos', require('./photos'));
-router.use('/tags', require('./tags'));
+//router.use('/tags', require('./tags'));
 router.use('/pano', require('./pano'));
 //router.use('/upload',require('./upload')); //anadi
 

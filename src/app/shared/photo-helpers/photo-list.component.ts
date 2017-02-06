@@ -41,7 +41,7 @@ export class PhotoListComponent {
     this.results = [];
 
     // Create limit and offset filter (if necessary)
-    if (this.limit) {
+    if (this.limit || typeof (this.limit) == "number") {
       this.query.filters.limit = this.limit;
       this.query.filters.offset =  (this.limit * (this.currentPage - 1))
     }

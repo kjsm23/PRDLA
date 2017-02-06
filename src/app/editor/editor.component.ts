@@ -1,6 +1,6 @@
 /**
  * Created by --- on 1/22/2017.
- */
+
 import { Component, OnInit,Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,11 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Photo, PhotosService } from '../shared';
 
 
+
 @Component({
   selector: 'editor-page',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
+
 export class EditorComponent implements OnInit {
   photo: Photo = new Photo();
   photoForm: FormGroup;
@@ -76,11 +78,15 @@ export class EditorComponent implements OnInit {
     //console.log( currentPano );
     // update the model
     this.updatePhoto(this.photoForm.value);
+
     //console.log(this.currentPano);
+
     // post the changes
     console.log(this.currentPano);
     this.photosService
+
       .save(this.currentPano)
+
       .subscribe(
         photo => this.router.navigateByUrl('/photo/' + photo.slug),
         err => {
