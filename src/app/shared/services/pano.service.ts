@@ -16,7 +16,10 @@ export class PanoService {
     private apiService: ApiService
   ) {}
 
-
+  get(slug): Observable<Pano> {
+    return this.apiService.get('/pano/' + slug)
+      .map(data => data.pano);
+  }
   save(pano):Observable<Pano>{
     return this.apiService.post('/pano', {pano: pano})
       .map(data => data.pano);
