@@ -1,11 +1,12 @@
 /**
  * Created by --- on 1/22/2017.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+ import {FileUploadSectionComponent} from './file-upload/file-upload-section';
 import { Photo, PhotosService } from '../shared';
+
 
 @Component({
   selector: 'editor-page',
@@ -15,6 +16,7 @@ import { Photo, PhotosService } from '../shared';
 export class EditorComponent implements OnInit {
   photo: Photo = new Photo();
   photoForm: FormGroup;
+  currentPano: string;
   tagField = new FormControl();
   errors: Object = {};
   isSubmitting: boolean = false;
@@ -23,8 +25,10 @@ export class EditorComponent implements OnInit {
     private photosService: PhotosService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+
   ) {
+
     // use the FormBuilder to create a form group
     this.photoForm = this.fb.group({
       title: '',
@@ -34,7 +38,11 @@ export class EditorComponent implements OnInit {
     // Optional: subscribe to value changes on the form
     // this.photoForm.valueChanges.subscribe(value => this.updatePhoto(value));
   }
-
+  handlePanoUpdated(panoramaChanged) {
+    // Handle the event
+    this.currentPano = panoramaChanged;
+    console.log('evento:' + panoramaChanged);
+  }
   ngOnInit() {
     // If there's an photo prefetched, load it
     this.route.data.subscribe(
@@ -65,13 +73,14 @@ export class EditorComponent implements OnInit {
 
   submitForm() {
     this.isSubmitting = true;
-
+    //console.log( currentPano );
     // update the model
     this.updatePhoto(this.photoForm.value);
-
+    //console.log(this.currentPano);
     // post the changes
+    console.log(this.currentPano);
     this.photosService
-      .save(this.photo)
+      .save(this.currentPano)
       .subscribe(
         photo => this.router.navigateByUrl('/photo/' + photo.slug),
         err => {
