@@ -136,8 +136,14 @@ router.post('/', auth.required, function(req, res, next) {
     if (!user) { return res.sendStatus(401); }
 
     var photo = new Photo(req.body.photo);
-
     photo.author = user;
+
+    photo.path = req.payload.path;
+    photo.Glat = req.payload.lat;
+    photo.Glog = req.payload.log;
+    photo.hotspot = req.payload.hotspot;
+    photo.transition = req.payload.transition;
+
 
     return photo.save().then(function(){
       console.log(photo.author);

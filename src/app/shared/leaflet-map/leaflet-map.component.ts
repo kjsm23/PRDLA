@@ -8,6 +8,8 @@ import {MapService} from "../services/map.service";
 import {GeocodingService} from "../services/geocoding.service";
 import {Location} from "../core/location.class";
 
+export let currentLocPano = new Object();
+
 @Component({
   selector: "leaflet-map",
   template: require<any>("./leaflet-map.component.html"),
@@ -15,13 +17,22 @@ import {Location} from "../core/location.class";
     require<any>("./leaflet-map.component.less")
   ],
   providers: []
+
 })
+
 export class LeafletMapComponent  {
 
   @ViewChild(MarkerComponent) markerComponent: MarkerComponent;
 
+
+
   constructor(private mapService: MapService, private geocoder: GeocodingService) {
+  //exports.currentLocPano = this.currentLocPano;
+
+
   }
+
+
 
   ngOnInit() {
     let map = L.map("map", {
@@ -47,7 +58,19 @@ export class LeafletMapComponent  {
 
   }
 
+
+  handleLocPanoUpdated(panoLocChanged) {
+    // Handle the event
+    console.log('kenininja:' + panoLocChanged);
+    currentLocPano = panoLocChanged;
+    console.log('evento:' + currentLocPano);
+
+  }
+
   ngAfterViewInit() {
     this.markerComponent.Initialize();
   }
+
+
 }
+

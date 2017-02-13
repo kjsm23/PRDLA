@@ -4,7 +4,7 @@
 import {Component,Output,EventEmitter} from "@angular/core";
 import {MapService} from "../../services/map.service";
 import {Map, MouseEvent, Marker} from "leaflet";
-
+import featureGroup = L.featureGroup;
 
 @Component({
   selector: "marker",
@@ -20,7 +20,7 @@ export class MarkerComponent {
   removing: boolean;
   markerCount: number;
   marker:any;
-
+  pos = new Object();
 
   constructor(private mapService: MapService) {
     this.editing = false;
@@ -70,8 +70,11 @@ export class MarkerComponent {
       }else{
           this.marker.setLatLng(e.latlng);
         }
-        this.locpano.emit({lat: e.latlng.lat, lng: e.latlng.lng });
-        console.log(e.latlng);
+        this.pos = {lat: e.latlng.lat, lng: e.latlng.lng };
+        console.log(this.pos);
+        this.locpano.emit(e.latlng);
+
+
     });
   }
 

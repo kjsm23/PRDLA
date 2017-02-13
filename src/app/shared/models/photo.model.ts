@@ -7,14 +7,18 @@ export class Photo{
   slug:string;
   title:string = '';
   description:string = '';
+  pathPano:string ;
+  lat: number;
+  log: number;
   body: string = '';
+  hotspot: [{}];
+  transition: string;
   createdAt:string;
   updatedAt:string;
   favorited:boolean;
   favoritesCount:number;
   author:Profile;
   image:string;
-  lat: number;
-  lng:number;
+
 
 }

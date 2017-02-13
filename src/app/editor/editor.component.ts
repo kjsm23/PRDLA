@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
  import {FileUploadSectionComponent} from './file-upload/file-upload-section';
 import { Photo, PhotosService } from '../shared';
+import {LeafletMapComponent} from '../shared/leaflet-map/leaflet-map.component';
+import{currentLocPano} from '../shared/leaflet-map/leaflet-map.component';
 
 
 
@@ -16,10 +18,12 @@ import { Photo, PhotosService } from '../shared';
 })
 
 export class EditorComponent implements OnInit {
+  //@Input() currentLocPano;
+
   photo: Photo = new Photo();
   photoForm: FormGroup;
   currentPano: string;
-  currentLocPano = new Object();
+//  currentLocPano: string;
   tagField = new FormControl();
   errors: Object = {};
   isSubmitting: boolean = false;
@@ -46,13 +50,15 @@ export class EditorComponent implements OnInit {
     this.currentPano = panoramaChanged;
     console.log('evento:' + panoramaChanged);
   }
+
+  /*
   handleLocPanoUpdated(panoLocChanged) {
     // Handle the event
-
+    console.log('evento:' + panoLocChanged);
     this.currentLocPano = panoLocChanged;
     console.log('evento:' + panoLocChanged);
 
-  }
+  }*/
   ngOnInit() {
     // If there's an photo prefetched, load it
     this.route.data.subscribe(
@@ -91,6 +97,8 @@ export class EditorComponent implements OnInit {
 
     // post the changes
     console.log(this.currentPano);
+    console.log(currentLocPano);
+
     this.photosService
 
       .save(this.currentPano)
