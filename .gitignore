@@ -40,3 +40,4 @@ testem.log
 Thumbs.db
 img/User/upload/file-1486143565876.jpg
 *.jpg
+src/server/routes/index.js
