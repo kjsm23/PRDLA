@@ -22,7 +22,7 @@ export class EditorComponent implements OnInit {
 
   photo: Photo = new Photo();
   photoForm: FormGroup;
-  currentPano: string;
+  currentPano: Object = {};
 //  currentLocPano: string;
   tagField = new FormControl();
   errors: Object = {};
@@ -47,8 +47,9 @@ export class EditorComponent implements OnInit {
   }
   handlePanoUpdated(panoramaChanged) {
     // Handle the event
-    this.currentPano = panoramaChanged;
+    this.currentPano= {panoPath:  panoramaChanged};
     console.log('evento:' + panoramaChanged);
+
   }
 
   /*
@@ -98,9 +99,12 @@ export class EditorComponent implements OnInit {
     // post the changes
     console.log(this.currentPano);
     console.log(currentLocPano);
+      this.currentPano = { panoPath:  this.currentPano, locationMap:  currentLocPano };
+
+
+    console.log(this.currentPano);
 
     this.photosService
-
       .save(this.currentPano)
 
       .subscribe(

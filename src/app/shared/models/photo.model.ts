@@ -9,7 +9,7 @@ export class Photo{
   description:string = '';
   pathPano:string ;
   lat: number;
-  log: number;
+  lng: number;
   body: string = '';
   hotspot: [{}];
   transition: string;

@@ -1,6 +1,8 @@
 /**
  * Created by --- on 1/26/2017.
  */
+
+/*
 var router = require('express').Router();
 var passport = require('passport');
 var mongoose = require('mongoose');
@@ -38,3 +40,4 @@ router.post('/', auth.required, function(req,res,next){
 
 });
 module.exports = router;
+*/

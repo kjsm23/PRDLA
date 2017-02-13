@@ -140,7 +140,7 @@ router.post('/', auth.required, function(req, res, next) {
 
     photo.path = req.payload.path;
     photo.Glat = req.payload.lat;
-    photo.Glog = req.payload.log;
+    photo.Glog = req.payload.lng;
     photo.hotspot = req.payload.hotspot;
     photo.transition = req.payload.transition;
 
