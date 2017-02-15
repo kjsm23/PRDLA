@@ -10,7 +10,7 @@ export * from './map.service';
 export * from './photos.service';
 export * from './profiles.service';
 export * from './user.service';
-export * from './pano.service';
+// export * from './pano.service';
 
 
 

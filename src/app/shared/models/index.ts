@@ -7,4 +7,4 @@ export * from './photo.model';
 export * from './photo-list-config.model';
 export * from './profile.model';
 export * from './user.model';
-export * from './pano.model';
+// export * from './pano.model';

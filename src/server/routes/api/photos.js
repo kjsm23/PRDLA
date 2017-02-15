@@ -77,7 +77,7 @@ router.get('/', auth.optional, function(req, res, next) {
         .populate('author')
         .exec(),
       Photo.count(query).exec(),
-      req.payload ? User.findById(req.payload.id) : null,
+      req.payload ? User.findById(req.payload.id) : null
     ]).then(function(results){
       var photos = results[0];
       var photosCount = results[1];
@@ -133,20 +133,27 @@ router.get('/feed', auth.required, function(req, res, next) {
 
 router.post('/', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
+
     if (!user) { return res.sendStatus(401); }
+    console.log(req.body.photo);
+    console.log(req.payload);
 
-    var photo = new Photo(req.body.photo);
-    photo.author = user;
+     var photo = new Photo();
 
-    photo.path = req.payload.path;
-    photo.Glat = req.payload.lat;
-    photo.Glog = req.payload.lng;
-    photo.hotspot = req.payload.hotspot;
-    photo.transition = req.payload.transition;
+      photo.author = user;
+      photo.Panopath =  req.body.photo.panoPath.panoPath;
+      photo.Glat = req.body.photo.locationMap.lat;
+      photo.Glong = req.body.photo.locationMap.lng;
+      console.log(photo);
+    // photo.path = req.payload.path;
+    // photo.Glat = req.payload.lat;
+    // photo.Glog = req.payload.lng;
+    // photo.hotspot = req.payload.hotspot;
+    // photo.transition = req.payload.transition;
 
 
     return photo.save().then(function(){
-      console.log(photo.author);
+      //console.log(photo.author);
       return res.json({photo: photo.toJSONFor(user)});
     });
   }).catch(next);

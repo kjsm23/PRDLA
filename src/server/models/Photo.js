@@ -10,7 +10,7 @@ var PhotoSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
   title: String,
   description: String,
-  path: String,
+  Panopath: String,
   Glat: Number,
   Glong: Number,
   hotspot:[{}] ,
@@ -26,14 +26,14 @@ var PhotoSchema = new mongoose.Schema({
 PhotoSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
 PhotoSchema.pre('validate', function(next){
-  this.slugify();
+  //this.slugify();
 
   next();
 });
 
-PhotoSchema.methods.slugify = function() {
-  this.slug = slug(this.title);
-};
+// PhotoSchema.methods.slugify = function() {
+//   this.slug = slug();
+// };
 
 PhotoSchema.methods.updateFavoriteCount = function() {
   var photo = this;
@@ -50,7 +50,7 @@ PhotoSchema.methods.toJSONFor = function(user){
     slug: this.slug,
     title: this.title,
     description: this.description,
-    path: this.path,
+    Panopath: this.Panopath,
     Glat: this.Glat,
     Glong: this.Glong,
     image: this.image,

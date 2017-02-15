@@ -22,7 +22,7 @@ import{
   HeaderComponent,
   MapService,
   JwtService,
-  PanoService,
+  // PanoService,
   PhotosService,
   ProfilesService,
   SharedModule,
@@ -59,7 +59,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     GeocodingService,
     JwtService,
     MapService,
-    PanoService,
+    // PanoService,
     PhotosService,
     ProfilesService,
     UserService
