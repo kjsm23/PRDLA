@@ -5,9 +5,10 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var slug = require('slug');
 var User = mongoose.model('User');
+var Uid = require('node-uuid');
 
 var PhotoSchema = new mongoose.Schema({
-  slug: {type: String, lowercase: true, unique: true},
+  slug: {type: String}, //, lowercase: true, unique: true
   title: String,
   description: String,
   Panopath: String,
@@ -26,14 +27,16 @@ var PhotoSchema = new mongoose.Schema({
 PhotoSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
 PhotoSchema.pre('validate', function(next){
-  //this.slugify();
+  this.slugify();
 
   next();
 });
 
-// PhotoSchema.methods.slugify = function() {
-//   this.slug = slug();
-// };
+PhotoSchema.methods.slugify = function() {
+  var bufferuuid = new Buffer(32);
+  Uid.v4(null, bufferuuid, 16);
+  this.slug =  Uid.unparse(bufferuuid); //slug(this.title);
+};
 
 PhotoSchema.methods.updateFavoriteCount = function() {
   var photo = this;
