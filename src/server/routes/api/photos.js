@@ -52,21 +52,22 @@ router.get('/', auth.optional, function(req, res, next) {
    // query.tagList = {"$in" : [req.query.tag]};
  // }
   Promise.all([
-    req.query.author ? User.findOne({username: req.query.author}) : null,
-    req.query.favorited ? User.findOne({username: req.query.favorited}) : null
+    //req.query.author ? User.findOne({username: req.query.author}) : null,
+    //req.query.favorited ? User.findOne({username: req.query.favorited}) : null
+    req.query.author = 'test'
   ]).then(function(results){
-    var author = results[0];
-    var favoriter = results[1];
-
-    if(author){
-      query.author = author._id;
-    }
-
-    if(favoriter){
-      query._id = {$in: favoriter.favorites};
-    } else if(req.query.favorited){
-      query._id = {$in: []};
-    }
+    // var author = results[0];
+    // var favoriter = results[1];
+    //
+    // if(author){
+    //   query.author = author._id;
+    // }
+    //
+    // if(favoriter){
+    //   query._id = {$in: favoriter.favorites};
+    // } else if(req.query.favorited){
+    //   query._id = {$in: []};
+    // }
     limit = parseInt(limit);
     offset = parseInt(offset);
     return Promise.all([
@@ -76,8 +77,8 @@ router.get('/', auth.optional, function(req, res, next) {
         .sort({createdAt: 'desc'})
         .populate('author')
         .exec(),
-      Photo.count(query).exec(),
-      req.payload ? User.findById(req.payload.id) : null
+      Photo.count(query).exec()//,
+      //req.payload ? User.findById(req.payload.id) : null
     ]).then(function(results){
       var photos = results[0];
       var photosCount = results[1];
@@ -93,7 +94,7 @@ router.get('/', auth.optional, function(req, res, next) {
   }).catch(next);
 });
 
-router.get('/feed', auth.required, function(req, res, next) {
+router.get('/feed', auth.optional, function(req, res, next) {
   var limit = 20;
   var offset = 0;
 
@@ -105,31 +106,31 @@ router.get('/feed', auth.required, function(req, res, next) {
     offset = req.query.offset;
   }
 
-  User.findById(req.payload.id).then(function(user){
-    if (!user) { return res.sendStatus(401); }
+  //User.findById(req.payload.id).then(function(user){
+    //if (!user) { return res.sendStatus(401); }
 
     limit = parseInt(limit);
     offset = parseInt(offset);
     Promise.all([
-      Photo.find({ author: {$in: user.following}})
+      Photo.find({})
         .limit(limit)
         .skip(offset)
         .populate('author')
-        .exec(),
-      Photo.count({ author: {$in: user.following}})
+        .exec()
+      //Photo.count({ author: {$in: user.following}})
     ]).then(function(results){
       var photos = results[0];
-      var photosCount = results[1];
+      //var photosCount = results[1];
 
       return res.json({
         photos: photos.map(function(photo){
-          return photo.toJSONFor(user);
-        }),
-        photosCount: photosCount
+          return photo.toJSONFor('');
+        })//,
+        //photosCount: photosCount
       });
     }).catch(next);
   });
-});
+//});
 
 router.post('/', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
