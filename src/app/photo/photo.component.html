@@ -1,6 +1,7 @@
 <div class = "photo-page">
   <div class = "container-fluid" id="photouploaded">
     <h1>{{photo.title}}</h1>
+
     <photo-meta [photo]="photo">
        <span [hidden]="!canModify">
           <a class="btn btn-sm btn-outline-secondary"

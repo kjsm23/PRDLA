@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import 'pannellum';
+declare const pannellum: any;
 
 import {
   Photo,
@@ -14,7 +16,7 @@ import {
   selector: 'photo-page',
   templateUrl: './photo.component.html'
 })
-export class PhotoComponent implements OnInit {
+export class PhotoComponent implements OnInit, AfterViewInit {
   photo: Photo;
   currentUser: User;
   canModify: boolean;
@@ -32,7 +34,9 @@ export class PhotoComponent implements OnInit {
     private userService: UserService,
   ) { }
 
+
   ngOnInit() {
+
     // Retreive the prefetched photo
     this.route.data.subscribe(
       (data: { photo: Photo }) => {
@@ -40,6 +44,7 @@ export class PhotoComponent implements OnInit {
 
         // Load the comments on this photo
         this.populateComments();
+        console.log(this.photo.image);
       }
     );
 
@@ -52,6 +57,17 @@ export class PhotoComponent implements OnInit {
       }
     );
   }
+
+  ngAfterViewInit() {
+    pannellum.viewer('panorama', {
+      "type": "equirectangular",
+      "panorama": this.photo.pathPano,
+      "autoLoad": true
+    })
+    console.log(this.photo.pathPano);
+  }
+
+
 
   onToggleFavorite(favorited: boolean) {
     this.photo.favorited = favorited;
@@ -111,5 +127,7 @@ export class PhotoComponent implements OnInit {
         }
       );
   }
+
+
 
 }

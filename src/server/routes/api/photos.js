@@ -141,13 +141,11 @@ router.post('/', auth.required, function(req, res, next) {
      var photo = new Photo();
 
       photo.author = user;
-      photo.Panopath =  req.body.photo.panoPath.panoPath;
+      photo.pathPano =  req.body.photo.panoPath.panoPath;
       photo.Glat = req.body.photo.locationMap.lat;
       photo.Glong = req.body.photo.locationMap.lng;
       console.log(photo);
-    // photo.path = req.payload.path;
-    // photo.Glat = req.payload.lat;
-    // photo.Glog = req.payload.lng;
+
     // photo.hotspot = req.payload.hotspot;
     // photo.transition = req.payload.transition;
 

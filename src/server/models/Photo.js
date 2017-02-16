@@ -11,7 +11,7 @@ var PhotoSchema = new mongoose.Schema({
   slug: {type: String}, //, lowercase: true, unique: true
   title: String,
   description: String,
-  Panopath: String,
+  pathPano: String,
   Glat: Number,
   Glong: Number,
   hotspot:[{}] ,
@@ -53,7 +53,7 @@ PhotoSchema.methods.toJSONFor = function(user){
     slug: this.slug,
     title: this.title,
     description: this.description,
-    Panopath: this.Panopath,
+    pathPano: this.pathPano,
     Glat: this.Glat,
     Glong: this.Glong,
     image: this.image,
