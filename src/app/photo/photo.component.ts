@@ -14,7 +14,8 @@ import {
 } from '../shared';
 @Component({
   selector: 'photo-page',
-  templateUrl: './photo.component.html'
+  templateUrl: './photo.component.html',
+  styleUrls: ['./photo.component.css']
 })
 export class PhotoComponent implements OnInit, AfterViewInit {
   photo: Photo;
@@ -42,9 +43,14 @@ export class PhotoComponent implements OnInit, AfterViewInit {
       (data: { photo: Photo }) => {
         this.photo = data.photo;
 
+        pannellum.viewer('panoramic', {
+          "type": "equirectangular",
+          "panorama": this.photo.pathPano,
+          "autoLoad": true
+        });
         // Load the comments on this photo
-        this.populateComments();
-        console.log(this.photo.image);
+        //this.populateComments();
+
       }
     );
 
@@ -59,11 +65,7 @@ export class PhotoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    pannellum.viewer('panorama', {
-      "type": "equirectangular",
-      "panorama": this.photo.pathPano,
-      "autoLoad": true
-    })
+
     console.log(this.photo.pathPano);
   }
 
