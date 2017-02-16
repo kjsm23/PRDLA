@@ -3,27 +3,27 @@
   [photo]="photo">
 </photo-preview>
 
-<div class="photo-preview"
-     [hidden]="!loading">
-  Loading Photos...
-</div>
+<!--<div class="photo-preview"-->
+     <!--[hidden]="!loading">-->
+  <!--Loading Photos...-->
+<!--</div>-->
 
-<div class="photo-preview"
-     [hidden]="loading || results.length">
-  No photos are here... yet.
-</div>
+<!--<div class="photo-preview"-->
+     <!--[hidden]="loading || results.length">-->
+  <!--No photos are here... yet.-->
+<!--</div>-->
 
-<nav [hidden]="loading || totalPages <= 1">
-  <ul class="pagination">
+<!--<nav [hidden]="loading || totalPages <= 1">-->
+  <!--<ul class="pagination">-->
 
-    <li class="page-item"
-        [ngClass]="{'active': pageNumber === currentPage}"
-        *ngFor="let pageNumber of totalPages"
-        (click)="setPageTo(pageNumber)">
+    <!--<li class="page-item"-->
+        <!--[ngClass]="{'active': pageNumber === currentPage}"-->
+        <!--*ngFor="let pageNumber of totalPages"-->
+        <!--(click)="setPageTo(pageNumber)">-->
 
-      <a class="page-link" href="#">{{ pageNumber }}</a>
+      <!--<a class="page-link" href="#">{{ pageNumber }}</a>-->
 
-    </li>
+    <!--</li>-->
 
-  </ul>
-</nav>
+  <!--</ul>-->
+<!--</nav>-->
