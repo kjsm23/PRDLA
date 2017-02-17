@@ -99,10 +99,10 @@ export class EditorComponent implements OnInit {
     // post the changes
     console.log(this.currentPano);
     console.log(currentLocPano);
-      this.currentPano = { panoPath:  this.currentPano, locationMap:  currentLocPano };
+      this.currentPano = { panoPath:  this.currentPano, locationMap:  currentLocPano , title: this.photo.title , description: this.photo.description};
 
 
-    console.log(this.currentPano);
+    console.log('Current Pano',this.currentPano);
 
     this.photosService
       .save(this.currentPano)

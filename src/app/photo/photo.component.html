@@ -47,7 +47,7 @@
               <br>
               <div class="panel panel-default">
                 <div class="panel-heading">{{photo.title}}</div>
-                <div class="panel-body" [innerHTML]="photo.body | markdown"></div>
+                <div class="panel-body"> {{photo.description}} </div>
               </div>
             </div>
 
@@ -70,7 +70,7 @@
                           <div class="form-group">
                             <textarea class="form-control" placeholder="Leave a Comment..." rows="3" [formControl]="commentControl"></textarea>
                           </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button (click)="addComment()" type="submit" class="btn btn-primary">Submit</button>
                         </fieldset>
                       </form>
                     </div>
@@ -97,11 +97,4 @@
         <p>ADS</p>
       </div>
     </div>
-
-
-
-
-
-
-
-
+</div>

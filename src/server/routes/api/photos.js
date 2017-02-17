@@ -145,6 +145,8 @@ router.post('/', auth.required, function(req, res, next) {
       photo.pathPano =  req.body.photo.panoPath.panoPath;
       photo.Glat = req.body.photo.locationMap.lat;
       photo.Glong = req.body.photo.locationMap.lng;
+      photo.title = req.body.photo.title;
+      photo.description = req.body.photo.description;
       console.log(photo);
 
     // photo.hotspot = req.payload.hotspot;

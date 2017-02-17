@@ -5,8 +5,8 @@ import {Profile} from './profile.model';
 
 export class Photo{
   slug:string;
-  title:string = '';
-  description:string = '';
+  title:string;
+  description:string;
   pathPano:string ;
   lat: number;
   lng: number;

@@ -1,24 +1,57 @@
 
 <div class="photo-preview">
-  <!--<photo-meta [photo]="photo">-->
-    <!--<favorite-button-->
-      <!--[photo]="photo"-->
-      <!--(onToggle)="onToggleFavorite($event)"-->
-      <!--class="pull-xs-right">-->
-      <!--{{photo.favoritesCount}}-->
-    <!--</favorite-button>-->
-  <!--</photo-meta>-->
+<!--<photo-meta [photo]="photo">-->
+    <!--<favorite-button
+      [photo]="photo"
+      (onToggle)="onToggleFavorite($event)"
+      class="pull-xs-right">
+      {{photo.favoritesCount}}
+    </favorite-button>-->
+ <!-- </photo-meta>-->
 
-  <!--<a [routerLink]="['/photo', photo.slug]" class="preview-link">-->
-    <!--<h1>{{ photo.title }}</h1>-->
-    <!--<p>{{ photo.description }}</p>-->
-    <!--<span>Read more...</span>-->
-    <!--&lt;!&ndash;<ul class="tag-list">-->
-      <!--<li class="tag-default tag-pill tag-outline"-->
-          <!--*ngFor="let tag of photo.tagList">-->
-        <!--{{ tag }}-->
-      <!--</li>-->
-    <!--</ul>&ndash;&gt;-->
-  <!--</a>-->
-<div id="panorama"></div>
+  <!--Show photo preview in home component -->
+    <div class="row text-center ">
+    <div class="col-md-3 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="embed-responsive embed-responsive-4by3">
+         <div class="container" id="panorama"></div>
+        </div>
+        <a [routerLink]="['/photo', photo.slug]" class="preview-link">
+        <div class="caption">
+          <h1>{{ photo.title }}</h1>
+          <!--<p>{{ photo.description }}</p>-->
+          <ul class="list-inline">
+            <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
+            </li>
+            <li><a href="#"><i class="fa fa-2x fa-envelope-o"></i></a>
+            </li>
+          </ul>
+        </div>
+        </a>
+      </div>
+    </div>
+    </div>
+  <!--./ end Show photo preview in home component -->
+
+    <!--<h1>{{ photo.title }}</h1>
+    <p>{{ photo.description }}</p>
+    <span>Read more...</span>
+    <ul class="tag-list">
+      <li class="tag-default tag-pill tag-outline"
+          *ngFor="let tag of photo.tagList">
+        {{ tag }}
+      </li>
+    </ul>-->
+
+
+
+<!--<div id="panorama"></div>
+</div>-->
+
+<style>
+  #panorama{
+    height:446px;
+    width:334.5px;
+  }
+</style>
 </div>

@@ -1,7 +1,7 @@
 /**
  * Created by --- on 1/21/2017.
  */
-import {Component, Input, OnInit, AfterViewInit} from '@angular/core';
+import {Component, Input, AfterViewInit} from '@angular/core';
 
 import { Photo } from '../models';
 
@@ -21,8 +21,7 @@ export class PhotoPreviewComponent implements AfterViewInit{
       {
         "type":"equirectangular",
         "panorama": this.photo.pathPano,
-        "autoload": true
-
+        "autoLoad": true
       });
   };
 

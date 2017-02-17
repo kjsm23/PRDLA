@@ -5,12 +5,15 @@ import { Component, Input } from '@angular/core';
 
 import { Photo, PhotoListConfig } from '../models';
 import { PhotosService } from '../services';
+import 'pannellum';
+declare const pannellum: any;
 
 @Component({
   selector: 'photo-list',
   templateUrl: './photo-list.component.html'
 })
 export class PhotoListComponent {
+
   constructor (
     private photosService: PhotosService
   ) {}
@@ -51,8 +54,9 @@ export class PhotoListComponent {
         this.loading = false;
         this.results = data.photos;
 
+
         // Used from http://www.jstips.co/en/create-range-0...n-easily-using-one-line/
-        this.totalPages = Array.from(new Array(Math.ceil(data.photosCount / this.limit)),(val,index)=>index+1);
+        //this.totalPages = Array.from(new Array(Math.ceil(data.photosCount / this.limit)),(val,index)=>index+1);
       });
   }
 }
