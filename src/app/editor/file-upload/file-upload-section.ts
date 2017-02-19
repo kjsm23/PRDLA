@@ -16,7 +16,9 @@ declare const pannellum: any;
 
 @Component({
   selector: 'file-upload-section',
-  templateUrl: './file-upload-section.html'
+  templateUrl: './file-upload-section.html',
+  styleUrls: ['./file-upload-section.css']
+
 })
 
 
