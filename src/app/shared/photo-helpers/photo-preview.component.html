@@ -14,7 +14,9 @@
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
         <div class="embed-responsive embed-responsive-4by3">
-         <div class="container" id="panorama"></div>
+          <div class="panorama"   id="panorama" [attr.id]="ind"  >
+
+          </div>
         </div>
         <a [routerLink]="['/photo', photo.slug]" class="preview-link">
         <div class="caption">
@@ -49,7 +51,7 @@
 </div>-->
 
 <style>
-  #panorama{
+  .panorama{
     height:446px;
     width:334.5px;
   }
