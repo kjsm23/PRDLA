@@ -1,3 +1,36 @@
 footer {
-  margin: 50px 0;
+  background-color: black;
+  font-size: 12px !important;
+}
+
+#footer{
+  margin: 0 auto !important;
+  padding: 0px 3px;
+
+}
+
+#footerList{
+  margin: 9px auto !important;
+}
+
+ul{
+  display:block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+}
+
+li{
+  color: #d5d5d5;
+}
+
+#copyright{
+  margin-top: 15px;
+}
+
+.pull-right{
+  float: right !important;
+  margin-top: 6px;
 }
