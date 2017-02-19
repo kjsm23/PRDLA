@@ -1,11 +1,11 @@
 <!-- Posted Comments -->
 <!-- Comment -->
-<div class="media">
-  <a class="pull-left" [routerLink]="['/profile',comment.author.username]">
-    <img class="media-object" [src]="comment.author.image" alt="">
-  </a>
-  <div class="media-body">
-    <div class="media-heading" [routerLink]="['/profile',comment.author.username]">
+<div class="well>
+  <!--<a> "[routerLink]="['/profile',comment.author.username]">-->
+    <!--<img class="media-object" [src]="comment.author.image" alt="">-->
+  <!--</a>-->
+  <div class="well">
+    <div class="well" [routerLink]="['/profile',comment.author.username]">
       {{comment.author.username}}
       {{comment.createdAt | date: 'longDate'}}
       <span class="mod-options" [hidden]="!canModify">

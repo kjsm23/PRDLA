@@ -1,7 +1,9 @@
-<photo-preview
-  *ngFor="let photo of results"
-  [photo]="photo">
-</photo-preview>
+ <photo-preview
+   *ngFor="let photo of results; let ind = index;"
+   [photo]="photo" [ind] = "'panorama' + ind">
+ </photo-preview>
+
+
 
 <div class="photo-preview"
 [hidden]="!loading">

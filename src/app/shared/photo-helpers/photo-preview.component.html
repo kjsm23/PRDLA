@@ -10,16 +10,19 @@
  <!-- </photo-meta>-->
 
   <!--Show photo preview in home component -->
-    <div class="row text-center ">
-    <div class="col-md-3 col-sm-6 hero-feature">
+<div class = "container-fluid pull-left">
+    <div class="row text-center">
+    <div class="col-md-3 col-sm-6 hero-feature ">
       <div class="thumbnail">
         <div class="embed-responsive embed-responsive-4by3">
-         <div class="container" id="panorama"></div>
+         <div class ="panorama" id="panorama" [attr.id]="ind">
+
+         </div>
         </div>
         <a [routerLink]="['/photo', photo.slug]" class="preview-link">
         <div class="caption">
           <h1>{{ photo.title }}</h1>
-          <!--<p>{{ photo.description }}</p>-->
+          <p>{{ photo.description }}</p>
           <ul class="list-inline">
             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
             </li>
@@ -31,6 +34,7 @@
       </div>
     </div>
     </div>
+</div>
   <!--./ end Show photo preview in home component -->
 
     <!--<h1>{{ photo.title }}</h1>
@@ -50,8 +54,22 @@
 
 <style>
   #panorama{
-    height:446px;
-    width:334.5px;
+    height:600px;
+    width:400px;
+  }
+  .panorama{
+    height:600px;
+    width:400px;
+  }
+
+  .pull-left {
+    float: left !important;
+  }
+
+  .thumbnail{
+    height: 425px;
+    width: 350px;
   }
 </style>
 </div>
+
