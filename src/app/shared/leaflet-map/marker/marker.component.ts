@@ -1,10 +1,11 @@
 /**
  * Created by --- on 1/25/2017.
  */
-import {Component,Output,EventEmitter} from "@angular/core";
+import {Component,Output,EventEmitter,AfterViewInit,Input} from "@angular/core";
 import {MapService} from "../../services/map.service";
 import {Map, MouseEvent, Marker} from "leaflet";
 import featureGroup = L.featureGroup;
+
 
 @Component({
   selector: "marker",
@@ -14,7 +15,8 @@ import featureGroup = L.featureGroup;
   ],
   providers: []
 })
-export class MarkerComponent {
+export class MarkerComponent implements AfterViewInit{
+
   @Output() locpano = new EventEmitter();
   editing: boolean;
   removing: boolean;
@@ -30,9 +32,10 @@ export class MarkerComponent {
 
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.mapService.disableMouseEvent("add-marker");
-    this.mapService.disableMouseEvent("remove-marker");
+   // this.mapService.disableMouseEvent("remove-marker");
+
   }
 
 
@@ -74,9 +77,10 @@ export class MarkerComponent {
         console.log(this.pos);
         this.locpano.emit(e.latlng);
 
-
     });
+
   }
+
 
   toggleEditing() {
     this.editing = !this.editing;
@@ -86,11 +90,12 @@ export class MarkerComponent {
     }
   }
 
+/*
   toggleRemoving() {
     this.removing = !this.removing;
 
     if (this.editing && this.removing) {
       this.editing = false;
     }
-  }
+  }*/
 }

@@ -1,7 +1,7 @@
 /**
  * Created by --- on 1/25/2017.
  */
-import {Component, ViewChild} from "@angular/core";
+import {Component, ViewChild,OnInit,AfterViewInit} from "@angular/core";
 import {NavigatorComponent} from "./navigator/navigator.component";
 import {MarkerComponent} from "./marker/marker.component";
 import {MapService} from "../services/map.service";
@@ -20,19 +20,14 @@ export let currentLocPano = new Object();
 
 })
 
-export class LeafletMapComponent  {
+export class LeafletMapComponent implements OnInit,AfterViewInit {
 
   @ViewChild(MarkerComponent) markerComponent: MarkerComponent;
-
-
 
   constructor(private mapService: MapService, private geocoder: GeocodingService) {
   //exports.currentLocPano = this.currentLocPano;
 
-
   }
-
-
 
   ngOnInit() {
     let map = L.map("map", {
