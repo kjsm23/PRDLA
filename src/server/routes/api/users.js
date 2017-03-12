@@ -8,6 +8,8 @@ var User = mongoose.model('User');
 var multer  =  require('multer');
 var auth = require('../auth');
 var fs = require('fs');
+var Group = mongoose.model('Group');
+
 
 
 
@@ -36,7 +38,22 @@ var upload = multer({ //multer settings
   storage: storage
 }).single('file');
 
-
+// // Function to verify usertype
+// var needsGroup = function(usertipo){
+//   return [
+//     function (req,res,next) {
+//       if(req.payload.username && req.payload.usertipo === usertipo)
+//         next();
+//       else {
+//         console.log("Payload Username");
+//         console.log(req.payload.username);
+//         console.log("Payload usertipo");
+//         console.log(req.payload.usertipo);
+//         res.send(401, 'Unauthorized');
+//       }
+//     }
+//   ];
+// };
 
 router.get('/user', auth.required, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
@@ -67,6 +84,10 @@ router.put('/user', auth.required, function(req, res, next){
       user.setPassword(req.body.user.password);
     }
 
+    if(typeof req.body.user.usertipo !== 'undefined'){
+      user.usertipo = req.body.user.usertipo;
+    }
+
     return user.save().then(function(){
       return res.json({user: user.toAuthJSON()});
     });
@@ -78,7 +99,6 @@ router.post('/users/upload', function(req, res, next){
 
   console.log('Entre');
 });*/
-
 
 
 router.post('/users/login', function(req, res, next){
@@ -109,7 +129,9 @@ router.post('/users', function(req, res, next){
 
   user.username = req.body.user.username;
   user.email = req.body.user.email;
+  user.usertipo = req.body.user.usertipo;
   user.setPassword(req.body.user.password);
+
 
   user.save().then(function(){
     return res.json({user: user.toAuthJSON()});
@@ -127,18 +149,13 @@ router.get('/users/upload', function (req, res) {
 router.post('/users/upload',auth.required, function(req, res) {
   upload(req,res,function(err){
 
-
-    //console.log(req);
     console.log(req.payload.username);
     console.log(req.file.filename);
-
-    
 
     if(err){
       res.json({error_code:1,err_desc:err});
       return;
     }
-
     res.json({error_code:0,err_desc:null,auth:this.auth, panoInfo: {user: req.payload.username, filename: req.file.filename }});
 
   });

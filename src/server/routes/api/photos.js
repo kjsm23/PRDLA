@@ -94,6 +94,23 @@ router.get('/', auth.optional, function(req, res, next) {
   }).catch(next);
 });
 
+router.get('/photoByLocation', auth.optional, function(req, res, next) {
+  var limit = 20;
+  var offset = 0;
+
+  limit = parseInt(limit);
+  offset = parseInt(offset);
+  Promise.all([
+    Photo.find({},{Glong:1,Glat:1,slug:1,_id:0})
+      .limit(limit)
+      .skip(offset)
+      .exec()
+  ]).then(function(results){
+    return res.json({markers: results});
+  }).catch(next);
+});
+
+
 router.get('/feed', auth.optional, function(req, res, next) {
   var limit = 20;
   var offset = 0;
@@ -132,7 +149,8 @@ router.get('/feed', auth.optional, function(req, res, next) {
   });
 //});
 
-router.post('/', auth.required, function(req, res, next) {
+
+router.post('/', auth.required,function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
 
     if (!user) { return res.sendStatus(401); }

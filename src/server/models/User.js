@@ -12,8 +12,7 @@ var UserSchema = new mongoose.Schema({
   email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
   bio: String,
   image: String,
-  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo' }],
-  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  usertipo: String,
   hash: String,
   salt: String
 }, {timestamps: true});
@@ -46,7 +45,8 @@ UserSchema.methods.toAuthJSON = function(){
   return {
     username: this.username,
     email: this.email,
-    token: this.generateJWT()
+    token: this.generateJWT(),
+    usertipo: this.usertipo
   };
 };
 
@@ -55,46 +55,9 @@ UserSchema.methods.toProfileJSONFor = function(user){
     username: this.username,
     bio: this.bio,
     image: this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg',
-    following: user ? user.isFollowing(this._id) : false
+    usertipo: this.usertipo
   };
 };
 
-UserSchema.methods.favorite = function(id){
-  if(this.favorites.indexOf(id) === -1){
-    this.favorites.push(id);
-  }
-
-  return this.save();
-};
-
-UserSchema.methods.unfavorite = function(id){
-  this.favorites.remove(id);
-  return this.save();
-};
-
-UserSchema.methods.isFavorite = function(id){
-  return this.favorites.some(function(favoriteId){
-    return favoriteId.toString() === id.toString();
-  });
-};
-
-UserSchema.methods.follow = function(id){
-  if(this.favorites.indexOf(id) === -1){
-    this.following.push(id);
-  }
-
-  return this.save();
-};
-
-UserSchema.methods.unfollow = function(id){
-  this.following.remove(id);
-  return this.save();
-};
-
-UserSchema.methods.isFollowing = function(id){
-  return this.following.some(function(followId){
-    return followId.toString() === id.toString();
-  });
-};
 
 mongoose.model('User', UserSchema);

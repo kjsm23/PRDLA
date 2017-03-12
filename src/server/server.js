@@ -65,6 +65,7 @@ require('./models/User');
 require('./models/Photo');
 require('./models/Comment');
 require('./models/Pano');
+require('./models/Group');
 require('./config/passport');
 
 
