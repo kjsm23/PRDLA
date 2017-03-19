@@ -28,10 +28,9 @@
       "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"],
       "scripts": [
         "../node_modules/leaflet/dist/leaflet.js",
-
         "../node_modules/marked/marked.min.js",
-
-        "../node_modules/pannellum/build/pannellum.js"],
+        "../node_modules/pannellum/build/pannellum.js",
+        "../node_modules/jquery/dist/jquery.js"],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

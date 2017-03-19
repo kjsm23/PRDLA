@@ -43,7 +43,10 @@ export class LeafletMapComponent implements OnInit,AfterViewInit {
     L.control.layers(this.mapService.baseMaps).addTo(map);
     L.control.scale().addTo(map);
 
+    // this.mapService.getLocation();
+
     this.mapService.map = map;
+
     /*
     this.geocoder.getCurrentLocation()
       .subscribe(
@@ -64,6 +67,7 @@ export class LeafletMapComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit() {
     this.markerComponent.Initialize();
+
   }
 
 

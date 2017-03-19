@@ -6,6 +6,7 @@ import  {Router} from '@angular/router';
 
 import {PhotoListConfig,UserService} from '../shared';
 
+
 @Component({
   selector: 'home-page',
   templateUrl: './home.component.html',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit{
     private router: Router,
     //private tagsService: TagsService,
     private userService: UserService
+
   ){}
 
   isAuthenticated:boolean;

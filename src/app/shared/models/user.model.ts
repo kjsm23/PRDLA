@@ -7,4 +7,8 @@ export class User {
   username: string;
   bio: string;
   image: string;
+  usertipo: string;
+  question1:string;
+  question2:string;
+  question3:string;
 }

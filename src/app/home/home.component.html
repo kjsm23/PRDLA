@@ -1,4 +1,3 @@
-
 <div class = "home-page">
 
       <!-- Page Content -->
@@ -8,28 +7,16 @@
          style="border-style:none;" src="http://cdn.pannellum.org/2.3/pannellum.htm#panorama=http%3A//static.panoramio.com/photos/large/12413588.jpg"></iframe>-->
        <iframe class = "embed-responsive-item" width="100%" height="500px" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.3/pannellum.htm?panorama=https://pannellum.org/images/alma.jpg"></iframe>
       </div>
-
-
       <section>
         <div class = "container-fluid">
           <!-- Title -->
           <div class="row">
             <div class="col-md-9">
               <div class ="feed-toggle">
-              <ul class ="nav nav-tabs">
-                <li>
-                  <a [ngClass]="{'active': listConfig.type ==='feed'}"
-                     (click)="setListTo('feed')">Latest Your Panoramas
-                  </a>
-                </li>
-                <li>
                   <a
                      [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters}"
                      (click)="setListTo('all')">
-                    Global Panoramas
                   </a>
-                </li>
-              </ul>
               </div>
               </div>
             </div>
@@ -37,7 +24,7 @@
 
         <!-- Page Features -->
             <div class = "container">
-                       <photo-list [limit]="8" [config]="listConfig"></photo-list>
+              <photo-list [limit]="8" [config]="listConfig"></photo-list>
             </div>
 
       </section>

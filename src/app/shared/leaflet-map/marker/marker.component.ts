@@ -81,7 +81,6 @@ export class MarkerComponent implements AfterViewInit{
 
   }
 
-
   toggleEditing() {
     this.editing = !this.editing;
 

@@ -11,16 +11,12 @@ import { Photo, PhotosService, UserService,  User } from '../../shared';
 import featureGroup = L.featureGroup;
 declare const pannellum: any;
 
-//const URL = '/';
-//const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-
 @Component({
   selector: 'file-upload-section',
   templateUrl: './file-upload-section.html',
   styleUrls: ['./file-upload-section.css']
 
 })
-
 
 export class FileUploadSectionComponent  {
 
@@ -32,16 +28,14 @@ constructor(
   ) {
 
 }
-
-
   photo: Photo;
   currentUser: User;
   canModify: boolean;
   comments: Comment[];
-
   commentFormErrors = {};
   isSubmitting = false;
   isDeleting = false;
+
 public uploader:FileUploader;
   ngOnInit() {
  // Load the current user's data
@@ -52,11 +46,13 @@ public uploader:FileUploader;
 	        this.canModify = true;
 	      }
 	    );
+	    console.log("This user");
       console.log( this.currentUser );
       this.uploader = new FileUploader({url:'http://localhost:3000/api/users/upload', authTokenHeader:"Authorization", authToken:"Token " +  this.currentUser.token});
 
        this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
 
+            console.log("Json parse Response");
             console.log( JSON.parse(response));
             var responseJson = JSON.parse(response);
             let panoPath = 'http://localhost:3000/' + responseJson.panoInfo.user + '/' + responseJson.panoInfo.filename;

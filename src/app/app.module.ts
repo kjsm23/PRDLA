@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { DashboardModule}  from './dashboard/dashboard.module';
 import {EditorModule} from './editor/editor.module';
 import { HomeModule } from './home/home.module';
 import {PhotoModule} from './photo/photo.module';
@@ -44,6 +45,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     HttpModule,
     AuthModule,
     HomeModule,
+    DashboardModule,
     EditorModule,
     PhotoModule,
     ProfileModule,
@@ -59,7 +61,6 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     GeocodingService,
     JwtService,
     MapService,
-    // PanoService,
     PhotosService,
     ProfilesService,
     UserService

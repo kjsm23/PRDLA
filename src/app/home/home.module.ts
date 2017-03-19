@@ -1,7 +1,7 @@
 /**
  * Created by --- on 1/17/2017.
  */
- 
+
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
@@ -23,14 +23,13 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
   imports: [
     homeRouting,
     SharedModule
-
   ],
   declarations: [
     HomeComponent
 
   ],
   providers: [
-    HomeAuthResolver,
+    HomeAuthResolver
 
   ]
 })
