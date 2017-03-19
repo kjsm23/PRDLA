@@ -19,13 +19,11 @@
           </fieldset>
 
           <fieldset class = "form-group">
-
               <input formControlName="email"
                      placeholder="Email"
                      class="form-control"
-                     type="text"/>
-
-
+                     type="text"
+                     *ngIf="authType == 'register' || authType == 'login' || authType == 'forgot' "/>
           </fieldset>
 
 
@@ -34,14 +32,73 @@
             <input formControlName="password"
                    placeholder="Password"
                    class="form-control"
-                   type="password"/>
-
-
+                   type="password"
+                   *ngIf="authType == 'register' || authType == 'login' "/>
         </fieldset>
 
+          <fieldset class="form-group" *ngIf="authType == 'register'">
+            <label for="usertipo">Select membership:</label>
+            <select formControlName="usertipo" class="form-control" id="usertipo">
+              <option>{{usertipo[0]}}</option>
+              <option>{{usertipo[1]}}</option>
+              <option>{{usertipo[2]}}</option>
+            </select>
+          </fieldset>
+
+          <!--forgot password-->
+
+          <fieldset class="form-group" *ngIf="authType == 'forgot' || authType == 'register'">
+            <label for="usertipo">Question 1:</label>
+            <select formControlName="question1" class="form-control" id="question1">
+              <option>{{questions[0]}}</option>
+              <option>{{questions[1]}}</option>
+              <option>{{questions[2]}}</option>
+            </select>
+          </fieldset>
+          <fieldset class = "form-group">
+            <input formControlName="question1"
+                   placeholder="Answer"
+                   class="form-control"
+                   type="text"
+                   *ngIf="authType == 'forgot' || authType == 'register'" />
+          </fieldset>
+
+          <fieldset class="form-group" *ngIf="authType == 'forgot' || authType == 'register'">
+            <label for="usertipo">Question 2:</label>
+            <select formControlName="question2" class="form-control" id="question2">
+              <option>{{questions[0]}}</option>
+              <option>{{questions[1]}}</option>
+              <option>{{questions[2]}}</option>
+            </select>
+          </fieldset>
+
+          <fieldset class = "form-group">
+            <input formControlName="question2"
+                   placeholder="Answer"
+                   class="form-control"
+                   type="text"
+                   *ngIf="authType == 'forgot' || authType == 'register'" />
+          </fieldset>
+
+          <fieldset class="form-group" *ngIf="authType == 'forgot' || authType == 'register'">
+            <label for="usertipo">Question 3:</label>
+            <select formControlName="question3" class="form-control" id="question3">
+              <option>{{questions[0]}}</option>
+              <option>{{questions[1]}}</option>
+              <option>{{questions[2]}}</option>
+            </select>
+          </fieldset>
+          <fieldset class = "form-group">
+            <input formControlName="question3"
+                   placeholder="Answer"
+                   class="form-control"
+                   type="text"
+                   *ngIf="authType == 'forgot' || authType == 'register'" />
+          </fieldset>
 
 
-        <div class="row">
+
+          <div class="row">
           <div class="col-xs-8">
             <div class="checkbox icheck">
               <label>
@@ -50,9 +107,12 @@
             </div>
           </div>
           <!-- /.col -->
-          <div class="col-xs-4">
+          <div class="col-xs-4" *ngIf="authType == 'register' || authType == 'login'">
             <button class="btn btn-primary btn-block btn-flat" [disabled]="!authForm.valid" type="submit">{{title}} </button>
           </div>
+            <div class="col-xs-4" *ngIf="authType == 'forgot'">
+              <button class="btn btn-primary btn-block btn-flat" [disabled]="!authForm.valid" type="submit">Submit</button>
+            </div>
           <!-- /.col -->
         </div>
 
@@ -64,8 +124,17 @@
       </div>
       <!-- /.social-auth-links -->
 
-      <a href="#">Forgot my password</a><br>
+      <a [routerLink]="['/forgot']" >Forgot my password</a><br>
       <a [routerLink]="['/register']" *ngIf="authType == 'login'">Register a new account</a>
+
+
+
+
+
+
+
+
+
         </fieldset>
       </form>
     </div>

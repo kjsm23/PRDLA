@@ -16,6 +16,8 @@ export class AuthComponent implements OnInit{
   errors: Errors = new Errors();
   isSubmitting:boolean = false;
   authForm: FormGroup;
+  usertipo: string[] = ["User Member", "Community Member", "Business Member"];
+  questions: string[] = ["In what city were you born?","What is your favorite color?","What is your favorite movie?"];
 
   constructor(
     private route: ActivatedRoute,
@@ -35,11 +37,22 @@ export class AuthComponent implements OnInit{
       // Get the last piece of the URL (it's either 'login' or 'register')
       this.authType = data[data.length - 1].path;
       // Set a title for the page accordingly
+
       this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
+
       // add form control for username if this is the register page
       if (this.authType === 'register') {
         this.authForm.addControl('username', new FormControl());
+        this.authForm.addControl('usertipo', new FormControl());
+        this.authForm.addControl('question1', new FormControl());
+        this.authForm.addControl('question2', new FormControl());
+        this.authForm.addControl('question3', new FormControl());
       }
+       if (this.authType === 'forgot') {
+         this.authForm.addControl('question1', new FormControl());
+         this.authForm.addControl('question2', new FormControl());
+         this.authForm.addControl('question3', new FormControl());
+       }
     });
   }
 
