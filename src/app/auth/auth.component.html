@@ -1,4 +1,4 @@
-<div class="auth-page">
+<div class="auth-page" *ngIf="authType == 'register' || authType == 'login'">
   <div class="hold-transition login-page" id="login">
   <div class="login-box">
     <div class="login-logo">
@@ -23,7 +23,7 @@
                      placeholder="Email"
                      class="form-control"
                      type="text"
-                     *ngIf="authType == 'register' || authType == 'login' || authType == 'forgot' "/>
+                     *ngIf="authType == 'register' || authType == 'login'  "/>
           </fieldset>
 
 
@@ -47,7 +47,7 @@
 
           <!--forgot password-->
 
-          <fieldset class="form-group" *ngIf="authType == 'forgot' || authType == 'register'">
+          <fieldset class="form-group" *ngIf="authType == 'register'">
             <label for="usertipo">Question 1:</label>
             <select formControlName="question1" class="form-control" id="question1">
               <option>{{questions[0]}}</option>
@@ -60,10 +60,10 @@
                    placeholder="Answer"
                    class="form-control"
                    type="text"
-                   *ngIf="authType == 'forgot' || authType == 'register'" />
+                   *ngIf="authType == 'register'" />
           </fieldset>
 
-          <fieldset class="form-group" *ngIf="authType == 'forgot' || authType == 'register'">
+          <fieldset class="form-group" *ngIf="authType == 'register'">
             <label for="usertipo">Question 2:</label>
             <select formControlName="question2" class="form-control" id="question2">
               <option>{{questions[0]}}</option>
@@ -77,10 +77,10 @@
                    placeholder="Answer"
                    class="form-control"
                    type="text"
-                   *ngIf="authType == 'forgot' || authType == 'register'" />
+                   *ngIf="authType == 'register'" />
           </fieldset>
 
-          <fieldset class="form-group" *ngIf="authType == 'forgot' || authType == 'register'">
+          <fieldset class="form-group" *ngIf="authType == 'register'">
             <label for="usertipo">Question 3:</label>
             <select formControlName="question3" class="form-control" id="question3">
               <option>{{questions[0]}}</option>
@@ -93,7 +93,7 @@
                    placeholder="Answer"
                    class="form-control"
                    type="text"
-                   *ngIf="authType == 'forgot' || authType == 'register'" />
+                   *ngIf="authType == 'register'" />
           </fieldset>
 
 
@@ -110,9 +110,6 @@
           <div class="col-xs-4" *ngIf="authType == 'register' || authType == 'login'">
             <button class="btn btn-primary btn-block btn-flat" [disabled]="!authForm.valid" type="submit">{{title}} </button>
           </div>
-            <div class="col-xs-4" *ngIf="authType == 'forgot'">
-              <button class="btn btn-primary btn-block btn-flat" [disabled]="!authForm.valid" type="submit">Submit</button>
-            </div>
           <!-- /.col -->
         </div>
 
@@ -124,15 +121,10 @@
       </div>
       <!-- /.social-auth-links -->
 
+
       <a [routerLink]="['/forgot']" >Forgot my password</a><br>
+
       <a [routerLink]="['/register']" *ngIf="authType == 'login'">Register a new account</a>
-
-
-
-
-
-
-
 
 
         </fieldset>
@@ -144,3 +136,5 @@
      </div>
        <!--./hold transition-->
 </div>
+
+<forgot-page *ngIf="authType == 'forgot'" ></forgot-page>

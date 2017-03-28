@@ -48,11 +48,6 @@ export class AuthComponent implements OnInit{
         this.authForm.addControl('question2', new FormControl());
         this.authForm.addControl('question3', new FormControl());
       }
-       if (this.authType === 'forgot') {
-         this.authForm.addControl('question1', new FormControl());
-         this.authForm.addControl('question2', new FormControl());
-         this.authForm.addControl('question3', new FormControl());
-       }
     });
   }
 

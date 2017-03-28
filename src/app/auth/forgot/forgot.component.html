@@ -1,0 +1,88 @@
+<div class="forgot-page">
+  <div class="hold-transition login-page" id="login">
+    <div class="login-box">
+      <div class="login-logo">
+        <img src = './assets/logo.png'>
+      </div>
+      <!-- /.login-logo -->
+      <div class="login-box-body">
+        <p class="login-box-msg">Forgot Password</p>
+        <list-errors [errors]="errors"></list-errors>
+        <form [formGroup]="authForm2" (ngSubmit)="submitForm2()">
+            <fieldset class = "form-group">
+              <input formControlName="email1"
+                     placeholder="Email"
+                     class="form-control"
+                     type="text"
+                     *ngIf="authType == 'forgot'"/>
+            </fieldset>
+
+            <!--forgot password-->
+
+            <fieldset class="form-group">
+              <label for="fquestion1">Question 1:</label>
+              <select formControlName="fquestion1" class="form-control" id="fquestion1">
+                <option>{{questions[0]}}</option>
+                <option>{{questions[1]}}</option>
+                <option>{{questions[2]}}</option>
+              </select>
+            </fieldset>
+            <fieldset class = "form-group">
+              <input formControlName="fquestion1"
+                     placeholder="Answer"
+                     class="form-control"
+                     type="text"
+                     *ngIf="authType == 'forgot'"/>
+            </fieldset>
+
+            <fieldset class="form-group" *ngIf="authType == 'forgot'">
+              <label for="fquestion2">Question 2:</label>
+              <select formControlName="fquestion2" class="form-control" id="fquestion2">
+                <option>{{questions[0]}}</option>
+                <option>{{questions[1]}}</option>
+                <option>{{questions[2]}}</option>
+              </select>
+            </fieldset>
+
+            <fieldset class = "form-group">
+              <input formControlName="fquestion2"
+                     placeholder="Answer"
+                     class="form-control"
+                     type="text"
+                     *ngIf="authType == 'forgot'"/>
+            </fieldset>
+
+            <fieldset class="form-group" *ngIf="authType == 'forgot'">
+              <label for="fquestion3">Question 3:</label>
+              <select formControlName="fquestion3" class="form-control" id="fquestion3">
+                <option>{{questions[0]}}</option>
+                <option>{{questions[1]}}</option>
+                <option>{{questions[2]}}</option>
+              </select>
+            </fieldset>
+            <fieldset class = "form-group">
+              <input formControlName="fquestion3"
+                     placeholder="Answer"
+                     class="form-control"
+                     type="text"
+                     *ngIf="authType == 'forgot'"/>
+            </fieldset>
+
+
+
+            <div class="row">
+              <div class="col-xs-4">
+                <button class="btn btn-primary btn-block btn-flat" [disabled]="!authForm2.valid" type="submit">Submit</button>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.social-auth-links-->
+
+        </form>
+      </div>
+      <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
+  </div>
+  <!--./hold transition-->
+</div>
