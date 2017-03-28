@@ -177,41 +177,47 @@ router.post('/users/upload',auth.required, function(req, res) {
 });
 
 /**Forgot Password path */
-router.post('/forgot', function(req, res, next){
+router.post('/users/forgot',auth.optional, function(req, res, next) {
 
 
-    if(!req.body.user.question1){
-      return res.status(422).json({errors: {question1: "can't be blank"}});
-    }
+  if (!req.body.user.email1) {
+    return res.status(422).json({errors: {email1: "can't be blank"}});
+  }
 
-    if(!req.body.user.question2){
-      return res.status(422).json({errors: {question2: "can't be blank"}});
-    }
+  if (!req.body.user.fquestion1) {
+    return res.status(422).json({errors: {fquestion1: "can't be blank"}});
+  }
 
-    if(!req.body.user.question3){
-      return res.status(422).json({errors: {question3: "can't be blank"}});
-    }
+  if (!req.body.user.fquestion2) {
+    return res.status(422).json({errors: {fquestion2: "can't be blank"}});
+  }
 
-    console.log('fuera del if');
-    if(req.body.user.question1 == req.payload.question1)
-    {
-      console.log('Entre al if');
-      console.log('req.body.user question',req.body.user.question1)
-      console.log('req. payload question',req.payload.question1)
-    }
-    (req, res, next);
- });
+  if (!req.body.user.fquestion3) {
+    return res.status(422).json({errors: {fquestion3: "can't be blank"}});
+  }
 
 
 
+  console.log(req.body.user.fquestion1);
+    //Query to find email and answer of the user
+   User.find({email: req.body.user.email1},{_id:0, question1: 1},function (err,user){
+     if(err)throw err;
 
-//
-// router.get('/forgot', function(req, res) {
-//   res.render('forgot', {
-//     user: req.user
-//   });
-// });
-//
+
+     console.log(user);
+   });
+
+  console.log('fuera del if');
+
+  if(req.body.user.fquestion1 === User.find({email: req.body.user.email1},{_id:0, question1: 1}))
+  {
+     console.log('dentro del if');
+     return true;
+  }
+  (req, res, next);
+});
+
+
 // router.post('/forgot', function(req, res, next) {
 //   async.waterfall([
 //     function(done) {
