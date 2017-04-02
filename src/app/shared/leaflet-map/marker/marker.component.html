@@ -1,4 +1,5 @@
-<button id="add-marker" class="btn btn-default on-map" [class.btn-primary]="editing"
+
+<button [style.visibility]='hidden' id="add-marker" class="btn btn-default on-map" [class.btn-primary]="editing"
         title="Add Marker" (click)="toggleEditing()" btnCheckbox>
   <i class="fa fa-map-marker fa"></i>
 </button>

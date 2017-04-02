@@ -29,7 +29,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // avoid error with cors wildcard
-var originsWhitelist = [ 'http://localhost:4200']; // My front end
+var originsWhitelist = [ 'http://localhost:4200', 'http://127.0.0.1:4200']; // My front end
+
 
 var corsOptions = {
 

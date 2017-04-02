@@ -1,11 +1,12 @@
 /**
  * Created by --- on 1/25/2017.
  */
-import {Component, ViewChild,OnInit,AfterViewInit} from "@angular/core";
+import {Component, ViewChild,OnInit,AfterViewInit, Input} from "@angular/core";
 import {NavigatorComponent} from "./navigator/navigator.component";
 import {MarkerComponent} from "./marker/marker.component";
 import {MapService} from "../services/map.service";
 import {GeocodingService} from "../services/geocoding.service";
+import { PhotosService } from '../services';
 import {Location} from "../core/location.class";
 
 export let currentLocPano = new Object();
@@ -22,14 +23,22 @@ export let currentLocPano = new Object();
 
 export class LeafletMapComponent implements OnInit,AfterViewInit {
 
+  @Input() printmarkers : any;
+  @Input() editMode: any;
+
+
+
   @ViewChild(MarkerComponent) markerComponent: MarkerComponent;
 
-  constructor(private mapService: MapService, private geocoder: GeocodingService) {
-  //exports.currentLocPano = this.currentLocPano;
+  constructor(private mapService: MapService, private photosService: PhotosService  ) {
+    //exports.currentLocPano = this.currentLocPano;
 
   }
 
   ngOnInit() {
+
+
+
     let map = L.map("map", {
       zoomControl: false,
       center: L.latLng(18.4663, -66.105721),
@@ -40,12 +49,36 @@ export class LeafletMapComponent implements OnInit,AfterViewInit {
     });
 
     L.control.zoom({ position: "topright" }).addTo(map);
-    L.control.layers(this.mapService.baseMaps).addTo(map);
+   // L.control.layers(this.mapService.baseMaps).addTo(map);
     L.control.scale().addTo(map);
 
-    // this.mapService.getLocation();
 
-    this.mapService.map = map;
+      this.markerComponent.editing = this.editMode;
+
+
+
+
+    if(this.printmarkers) {
+      var oMarkers = new Array();
+      oMarkers = this.photosService.getHotspots().subscribe(data => {
+
+        var iconl = L.icon({
+            iconUrl: require<any>("../../../../node_modules/leaflet/dist/images/marker-icon.png"),
+            shadowUrl: require<any>("../../../../node_modules/leaflet/dist/images/marker-shadow.png"),
+            iconSize:[25, 41] ,
+            iconAnchor:   [12, 41]// point of the icon which will correspond to marker's location
+          }),
+          oMarkers = data.result;
+        //this.markersUpdated.emit(test);
+        for (let i of oMarkers) {
+          console.log(i);
+          L.marker([i.Glat, i.Glong], {icon: iconl}).addTo(map);
+        }
+        console.log(oMarkers);
+      });
+    };
+
+
 
     /*
     this.geocoder.getCurrentLocation()
@@ -54,6 +87,8 @@ export class LeafletMapComponent implements OnInit,AfterViewInit {
         err => console.error(err)
       );*/
 
+
+    this.mapService.map = map;
   }
 
 
@@ -67,9 +102,11 @@ export class LeafletMapComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit() {
     this.markerComponent.Initialize();
-
   }
 
+  public updateMarkers(mark){
 
+
+  }
 }
 

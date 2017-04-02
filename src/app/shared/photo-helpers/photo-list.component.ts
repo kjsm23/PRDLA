@@ -1,7 +1,7 @@
 /**
  * Created by --- on 1/21/2017.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Photo, PhotoListConfig } from '../models';
 import { PhotosService } from '../services';
@@ -16,6 +16,7 @@ export class PhotoListComponent {
 
   constructor (
     private photosService: PhotosService
+
   ) {}
 
   @Input() limit: number;
@@ -27,6 +28,8 @@ export class PhotoListComponent {
       this.runQuery();
     }
   }
+
+
 
   query: PhotoListConfig;
   results: Photo[];
@@ -48,6 +51,10 @@ export class PhotoListComponent {
       this.query.filters.limit = this.limit;
       this.query.filters.offset =  (this.limit * (this.currentPage - 1))
     }
+
+
+
+
 
     this.photosService.query(this.query)
       .subscribe(data => {

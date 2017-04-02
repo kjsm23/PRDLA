@@ -25,7 +25,7 @@ export class MarkerComponent implements AfterViewInit{
   pos = new Object();
 
   constructor(private mapService: MapService) {
-    this.editing = false;
+    this.editing = true;
     this.removing = false;
     this.markerCount = 0;
     this.marker;
@@ -40,54 +40,106 @@ export class MarkerComponent implements AfterViewInit{
 
 
   Initialize() {
-
     this.mapService.map.on("click", (e: MouseEvent) =>
     {
 
-      //if (this.editing) {
+      if (this.editing) {
         if(typeof(this.marker)=== 'undefined' ){
-         this.marker = L.marker(e.latlng,  {
+          this.marker = L.marker(e.latlng,  {
 
-          icon: L.icon({
-            iconUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-icon.png"),
-            shadowUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-shadow.png")
-          }),
-          draggable: true,
+            icon: L.icon({
+              iconUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-icon.png"),
+              shadowUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-shadow.png"),
 
-        })
-          .bindPopup("Marker #" + (this.markerCount + 1).toString(), {
-            offset: L.point(12, 6)
+              iconSize:[25, 41] ,
+              iconAnchor:   [12, 41]// point of the icon which will correspond to marker's location
+            }),
+            draggable: true,
+
           })
-          .addTo(this.mapService.map)
-          .openPopup();
+            .bindPopup("Marker #" + (this.markerCount + 1).toString(), {
+              offset: L.point(0, -28)
+            })
+            .addTo(this.mapService.map);
+            // .openPopup();
 
-        this.markerCount += 1;
+          this.markerCount += 1;
 
-        this.marker.on("click", (event: MouseEvent) => {
-          if (this.removing) {
-            this.mapService.map.removeLayer(this.marker);
-            this.markerCount -= 1;
-          }
-        });
+          this.marker.on('dragend', function(e) {
+            //alert('Vayase al carajo');
 
-      }else{
+
+            console.log('From marker dragend event: ');
+            var latlng = this.getLatLng();
+
+            this.pos = {lat: latlng.lat, lng: latlng.lng };
+            console.log(latlng);
+            //locpano.emit(latlng);
+          });
+
+          this.marker.on("click", (event: MouseEvent) => {
+            if (this.removing) {
+              this.mapService.map.removeLayer(this.marker);
+              this.markerCount -= 1;
+            }
+          });
+          this.editing = false;
+        }else{
           this.marker.setLatLng(e.latlng);
         }
         this.pos = {lat: e.latlng.lat, lng: e.latlng.lng };
         console.log(this.pos);
         this.locpano.emit(e.latlng);
 
-    });
+      }});
+    // this.mapService.map.on("click", (e: MouseEvent) =>
+    // {
+
+      //if (this.editing) {
+    //     if(typeof(this.marker)=== 'undefined' ){
+    //      this.marker = L.marker(e.latlng,  {
+    //
+    //       icon: L.icon({
+    //         iconUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-icon.png"),
+    //         shadowUrl: require<any>("../../../../../node_modules/leaflet/dist/images/marker-shadow.png")
+    //       }),
+    //       draggable: true,
+    //
+    //     })
+    //       .bindPopup("Marker #" + (this.markerCount + 1).toString(), {
+    //         offset: L.point(12, 6)
+    //       })
+    //       .addTo(this.mapService.map)
+    //       .openPopup();
+    //
+    //     this.markerCount += 1;
+    //
+    //     this.marker.on("click", (event: MouseEvent) => {
+    //       if (this.removing) {
+    //         this.mapService.map.removeLayer(this.marker);
+    //         this.markerCount -= 1;
+    //       }
+    //     });
+    //
+    //   }else{
+    //       this.marker.setLatLng(e.latlng);
+    //     }
+    //     this.pos = {lat: e.latlng.lat, lng: e.latlng.lng };
+    //     console.log(this.pos);
+    //     this.locpano.emit(e.latlng);
+    //
+    // });
 
   }
 
-  toggleEditing() {
-    this.editing = !this.editing;
 
-    if (this.editing && this.removing) {
-      this.removing = false;
-    }
-  }
+  // toggleEditing() {
+  //   this.editing = !this.editing;
+  //
+  //   if (this.editing && this.removing) {
+  //     this.removing = false;
+  //   }
+  // }
 
 /*
   toggleRemoving() {

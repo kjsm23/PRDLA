@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 
 import { ApiService } from './api.service';
 import { Photo, PhotoListConfig } from '../models';
+import any = jasmine.any;
 
 @Injectable()
 export class PhotosService {
@@ -60,6 +61,10 @@ export class PhotosService {
 
   unfavorite(slug): Observable<Photo> {
     return this.apiService.delete('/photos/' + slug + '/favorite');
+  }
+  getHotspots() :any{
+
+    return this.apiService.get2('/photos/photoByLocation');
   }
 
 }

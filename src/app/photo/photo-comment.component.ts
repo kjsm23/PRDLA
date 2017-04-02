@@ -17,6 +17,7 @@ export class PhotoCommentComponent implements OnInit {
   @Input() comment: Comment;
   @Output() deleteComment = new EventEmitter<boolean>();
 
+
   canModify: boolean;
 
   ngOnInit() {
