@@ -1,0 +1,111 @@
+<div class="container-fluid">
+  <h2 class="text-muted">Dashboard <small>Statistics Overview</small></h2>
+  <div class="row">
+    <div class="col-md-8">
+      <carousel [interval]="myInterval" [noWrap]="noWrapSlides">
+        <slide *ngFor="let slidez of slides;let index=index" [active]="slidez.active">
+          <img [src]="slidez.image">
+          <div class="carousel-caption">
+            <h4>Slide {{index}}</h4>
+            <p>{{slidez.text}}</p>
+          </div>
+        </slide>
+        <i class="fa fa-chevron-left left carousel-control"></i>
+        <i class="fa fa-chevron-right right carousel-control"></i>
+      </carousel>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>150</h3>
+          <p>New Photos</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-camera"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>150</h3>
+          <p>New Comments<p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-comments fa-5x"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h3>44</h3>
+
+          <p>User Registrations</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-add"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-red">
+        <div class="inner">
+          <h3>65</h3>
+          <p>Visitors</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-pie-graph"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+
+
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
+        </div>
+        <!-- /.card-header -->
+        <!--<timeline-cmp></timeline-cmp>-->
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bell fa-fw"></i> Notifications card
+        </div>
+        <!-- /.card-header -->
+        <!--<notifications-cmp></notifications-cmp>-->
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+      <chat-cmp></chat-cmp>
+      <!-- /.card .chat-card -->
+    </div>
+    <!-- /.col-lg-4 -->
+  </div>
+
+</div>
+</div>

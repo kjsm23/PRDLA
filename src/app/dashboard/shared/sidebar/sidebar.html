@@ -1,0 +1,192 @@
+<br>
+<br>
+<br>
+<br>
+
+<!--<button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">-->
+  <!--&#9776;-->
+<!--</button>-->
+
+<nav class="sidebar topnav" [ngClass]="{sidebarPushRight: isActive}">
+  <button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">
+    &#9776;
+  </button>
+  <!-- Sidebar user panel -->
+
+  <!-- /.search form -->
+  <!-- sidebar menu: : style can be found in sidebar.less -->
+  <div class="main-sidebar">
+
+  <ul class="sidebar-menu">
+  <li class="header">MENU</li>
+  <li class="active treeview">
+  <a href="#">
+  <i class="fa fa-dashboard"></i> <span>Home</span>
+  <span class="pull-right-container">
+  <i class="fa fa-angle-left pull-right"></i>
+  </span>
+  </a>
+  <ul class="treeview-menu">
+  <a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']">
+  <i class="fa fa-circle-o"></i>Dashboard
+  </a>
+  </ul>
+  </li>
+  <li class="treeview">
+  <a>
+  <i class="fa fa-dashboard"></i> <span>Users Configuration</span>
+  <span class="pull-right-container">
+  <i class="fa fa-angle-left pull-right"></i>
+  </span>
+  </a>
+  <ul class="treeview-menu">
+  <li class="active"><a href="account&privilegies.html">
+  <i class="fa fa-circle-o"></i>Account & Privilegies</a></li>
+  <li><a href=""><i class="fa fa-circle-o"></i>User Activity</a></li>
+  </ul>
+  </li>
+  <li class="treeview">
+  <a routerLink="/dashboard/tables" [routerLinkActive]="['router-link-active']">
+  <i class="fa fa-files-o"></i>
+  <span>Business Location</span>
+  <span class="pull-right-container">
+  <i class="fa fa-angle-left pull-right"></i>
+  </span>
+  </a>
+  <ul class="treeview-menu">
+  <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>Tags</a></li>
+  <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>Points of interest</a></li>
+  </ul>
+  </li>
+  <li class="treeview">
+  <a href="#">
+  <i class="fa fa-files-o"></i>
+  <span>Community Members</span>
+  <span class="pull-right-container">
+  <i class="fa fa-angle-left pull-right"></i>
+  </span>
+  </a>
+  <ul class="treeview-menu">
+  <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>Tags</a></li>
+  <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>Points of interest</a></li>
+  </ul>
+  </li>
+  <li class="treeview">
+  <a href="#">
+  <i class="fa fa-pie-chart"></i>
+  <span>Activity</span>
+  <span class="pull-right-container">
+  <i class="fa fa-angle-left pull-right"></i>
+  </span>
+  </a>
+  <ul class="treeview-menu">
+  <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+  <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+  <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+  <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+  </ul>
+  </li>
+  </ul>
+  </div>
+</nav>
+
+
+
+
+
+<!--<header class="main-header">-->
+  <!--<nav class="navbar navbar-static-top">-->
+    <!--&lt;!&ndash; Sidebar toggle button&ndash;&gt;-->
+    <!--<button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">-->
+      <!--&#9776;-->
+    <!--</button>-->
+  <!--</nav>-->
+<!--</header>-->
+
+
+<!--<aside class="main-sidebar">-->
+  <!--&lt;!&ndash; sidebar: style can be found in sidebar.less &ndash;&gt;-->
+  <!--<section class="sidebar">-->
+    <!--&lt;!&ndash; Sidebar user panel &ndash;&gt;-->
+
+    <!--&lt;!&ndash; /.search form &ndash;&gt;-->
+    <!--&lt;!&ndash; sidebar menu: : style can be found in sidebar.less &ndash;&gt;-->
+    <!--<ul class="sidebar-menu">-->
+      <!--<li class="header">MENU</li>-->
+      <!--<li class="active treeview">-->
+        <!--<a href="#">-->
+          <!--<i class="fa fa-dashboard"></i> <span>Home</span>-->
+          <!--<span class="pull-right-container">-->
+              <!--<i class="fa fa-angle-left pull-right"></i>-->
+            <!--</span>-->
+        <!--</a>-->
+        <!--<ul class="treeview-menu">-->
+          <!--<a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']">-->
+            <!--<i class="fa fa-circle-o"></i>Dashboard-->
+          <!--</a>-->
+        <!--</ul>-->
+      <!--</li>-->
+      <!--<li class="treeview">-->
+        <!--<a>-->
+          <!--<i class="fa fa-dashboard"></i> <span>Users Configuration</span>-->
+          <!--<span class="pull-right-container">-->
+              <!--<i class="fa fa-angle-left pull-right"></i>-->
+            <!--</span>-->
+        <!--</a>-->
+        <!--<ul class="treeview-menu">-->
+          <!--<li class="active"><a href="account&privilegies.html">-->
+            <!--<i class="fa fa-circle-o"></i>Account & Privilegies</a></li>-->
+          <!--<li><a href=""><i class="fa fa-circle-o"></i>User Activity</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
+      <!--<li class="treeview">-->
+        <!--<a routerLink="/dashboard/chart" [routerLinkActive]="['router-link-active']">-->
+          <!--<i class="fa fa-files-o"></i>-->
+          <!--<span>Business Location</span>-->
+          <!--<span class="pull-right-container">-->
+              <!--<i class="fa fa-angle-left pull-right"></i>-->
+            <!--</span>-->
+        <!--</a>-->
+        <!--<ul class="treeview-menu">-->
+          <!--<li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>Tags</a></li>-->
+          <!--<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>Points of interest</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
+      <!--<li class="treeview">-->
+        <!--<a href="#">-->
+          <!--<i class="fa fa-files-o"></i>-->
+          <!--<span>Community Members</span>-->
+          <!--<span class="pull-right-container">-->
+              <!--<i class="fa fa-angle-left pull-right"></i>-->
+            <!--</span>-->
+        <!--</a>-->
+        <!--<ul class="treeview-menu">-->
+          <!--<li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>Tags</a></li>-->
+          <!--<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>Points of interest</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
+      <!--<li class="treeview">-->
+        <!--<a href="#">-->
+          <!--<i class="fa fa-pie-chart"></i>-->
+          <!--<span>Activity</span>-->
+          <!--<span class="pull-right-container">-->
+              <!--<i class="fa fa-angle-left pull-right"></i>-->
+            <!--</span>-->
+        <!--</a>-->
+        <!--<ul class="treeview-menu">-->
+          <!--<li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>-->
+          <!--<li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>-->
+          <!--<li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>-->
+          <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</section>-->
+
+  <!--&lt;!&ndash; /.sidebar &ndash;&gt;-->
+<!--</aside>-->
+
+
+
+
+
