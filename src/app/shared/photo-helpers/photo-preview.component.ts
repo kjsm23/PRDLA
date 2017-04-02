@@ -16,14 +16,17 @@ declare const pannellum : any;
 export class PhotoPreviewComponent implements AfterViewInit{
   @Input() photo: Photo;
   @Input() ind: any;
+  panoIn : any;
+
 
   ngAfterViewInit(){
 
-    pannellum.viewer(this.ind,
+    this.panoIn = pannellum.viewer(this.ind,
       {
         "type":"equirectangular",
         "panorama": this.photo.pathPano,
-        "autoLoad": true
+        "autoLoad": true,
+        "hotSpots": this.photo.hotspot
       });
   };
 
