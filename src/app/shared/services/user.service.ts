@@ -73,6 +73,17 @@ export class UserService {
       );
   }
 
+  attemptForgot(type, credentials): Observable<User> {
+    let route = (type === 'forgot') ? '/forgot' : '';
+    return this.apiService.post('/users' + route, {user: credentials})
+      .map(
+        data => {
+          this.setAuth(data.user);
+          return data;
+        }
+      );
+  }
+
   getCurrentUser(): User {
     return this.currentUserSubject.value;
   }

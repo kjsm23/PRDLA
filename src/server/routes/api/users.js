@@ -209,6 +209,10 @@ router.post('/users/forgot',auth.optional, function(req, res, next) {
 
   console.log('fuera del if');
 
+ //User.find({email: req.body.user.email1},{_id:0, question1: 1});
+
+
+
   if(req.body.user.fquestion1 === User.find({email: req.body.user.email1},{_id:0, question1: 1}))
   {
      console.log('dentro del if');
