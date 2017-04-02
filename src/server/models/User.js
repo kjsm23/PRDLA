@@ -33,13 +33,13 @@ UserSchema.methods.setPassword = function(password){
   this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 
-UserSchema.methods.comparequestion = function(fquestion1,fquestion2,fquestion3, cb) {
-
-  bcrypt.compare(fquestion1, this.question1,fquestion2, this.question2,fquestion3,this.question3, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
-};
+// UserSchema.methods.comparequestion = function(fquestion1,fquestion2,fquestion3, cb) {
+//
+//   bcrypt.compare(fquestion1, this.question1,fquestion2, this.question2,fquestion3,this.question3, function(err, isMatch) {
+//     if (err) return cb(err);
+//     cb(null, isMatch);
+//   });
+// };
 
 UserSchema.methods.generateJWT = function() {
   var today = new Date();
