@@ -8,7 +8,7 @@ router.use('/api', require('./api/index'));
 
 router.get('/:uName/:panoName', function (req, res) {
   console.log(appDir);
-  var dir =   '/Users/Diator/Documents/WebstormProjects/PRDLA/img/User/upload/'+req.params.uName + '/' + req.params.panoName;
+  var dir =   '/Users/---/Documents/WebstormProjects/PRDLA/img/User/upload/'+req.params.uName + '/' + req.params.panoName;
 
 
   res.sendFile(dir);
