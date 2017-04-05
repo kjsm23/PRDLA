@@ -9,6 +9,9 @@ var multer  =  require('multer');
 var auth = require('../auth');
 var fs = require('fs');
 var Group = mongoose.model('Group');
+'use strict';
+const nodemailer = require('nodemailer');
+
 
 
 
@@ -198,26 +201,53 @@ router.post('/users/forgot',auth.optional, function(req, res, next) {
 
 
 
-  console.log(req.body.user.fquestion1);
-    //Query to find email and answer of the user
-   User.find({email: req.body.user.email1},{_id:0, question1: 1},function (err,user){
-     if(err)throw err;
+  User.findOne({email: req.body.user.email1},{_id:0, question1: 1, question2:2, question3:3}, function (err,user){
+    if(err) return handleError(err);
+         if (!user) {
+           console.log('error', 'No account with that email address exists.');
+         }
+    console.log('Question1',req.body.user.fquestion1);
+    console.log('Query1',user.question1);
+    console.log('Query2',user.question2);
+    console.log('Query3',user.question3);
+
+    console.log('Comparacion 1 ',req.body.user.fquestion1 === user.question1);
+    console.log('Comparacion 2 ',req.body.user.fquestion2 === user.question2);
+    console.log('Comparacion 3 ',req.body.user.fquestion3 === user.question3);
+
+    console.log('Comparacion de las tres',req.body.user.fquestion1 === user.question1 && req.body.user.fquestion2 === user.question2 && req.body.user.fquestion3 === user.question3);
+
+        if(req.body.user.fquestion1 === user.question1 && req.body.user.fquestion2 === user.question2 && req.body.user.fquestion3 === user.question3){
+
+          var transporter = nodemailer.createTransport({
+            service: 'hotmail',
+            auth: {
+              user: 'kjsm23@hotmail.com',
+              pass: 'xSamuraix'
+            }
+          });
+          var mailOptions = {
+            to: req.body.user.email1,
+            from: 'kjsm23@hotmail.com',
+            subject: 'PRDLA Password Reset',
+            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+            'http://' + req.headers.host + '/reset/'  + '\n\n' +
+            'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+          };
+          transporter.sendMail(mailOptions, function(err) {
+           if(err){
+             return console.log(err);
+           }
+          });
+
+        }else
+        {
+          res.redirect('/forgot');
+        }
+  });
 
 
-     console.log(user);
-   });
-
-  console.log('fuera del if');
-
- //User.find({email: req.body.user.email1},{_id:0, question1: 1});
-
-
-
-  if(req.body.user.fquestion1 === User.find({email: req.body.user.email1},{_id:0, question1: 1}))
-  {
-     console.log('dentro del if');
-     return true;
-  }
   (req, res, next);
 });
 
